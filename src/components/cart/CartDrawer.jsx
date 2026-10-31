@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
-import { FiX, FiMinus, FiPlus, FiTrash2 } from 'react-icons/fi'
+import { FiX, FiMinus, FiPlus } from 'react-icons/fi'
 
 export default function CartDrawer({ isOpen, onClose }) {
   const { cart, increaseQuantity, decreaseQuantity, removeFromCart, getCartTotal } = useCart()
@@ -29,24 +30,16 @@ export default function CartDrawer({ isOpen, onClose }) {
                 <div key={item.id} style={{ display: 'flex', gap: '12px', paddingBottom: '14px', borderBottom: '1px solid #f5f5f5' }}>
                   <img src={item.image} alt={item.name} style={{ width: '70px', height: '70px', borderRadius: '8px', objectFit: 'cover' }} />
                   <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <h4 style={{ fontWeight: '700', fontSize: '0.9rem', flex: 1 }}>{item.name}</h4>
-                      <button onClick={() => removeFromCart(item.id)} style={{ color: '#999' }}>
-                        <FiTrash2 size={16} />
-                      </button>
-                    </div>
+                    <h4 style={{ fontWeight: '700', fontSize: '0.9rem' }}>{item.name}</h4>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontWeight: '800', color: '#1A1A1A' }}>{item.price} ر.س</span>
+                      <span style={{ fontWeight: '800' }}>{item.price} ر.س</span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e5e5e5', borderRadius: '6px', padding: '4px 10px' }}>
-                        <button onClick={() => decreaseQuantity(item.id)} style={{ color: '#1A1A1A' }}>
-                          <FiMinus size={14} />
-                        </button>
-                        <span style={{ fontWeight: '700', minWidth: '16px', textAlign: 'center', fontSize: '0.9rem' }}>{item.quantity}</span>
-                        <button onClick={() => increaseQuantity(item.id)} style={{ color: '#1A1A1A' }}>
-                          <FiPlus size={14} />
-                        </button>
+                        <button onClick={() => decreaseQuantity(item.id)}><FiMinus size={14} /></button>
+                        <span style={{ fontWeight: '700', fontSize: '0.9rem' }}>{item.quantity}</span>
+                        <button onClick={() => increaseQuantity(item.id)}><FiPlus size={14} /></button>
                       </div>
                     </div>
+                    <button onClick={() => removeFromCart(item.id)} style={{ color: '#D9534F', fontSize: '0.85rem', textAlign: 'right' }}>حذف</button>
                   </div>
                 </div>
               ))}
@@ -60,9 +53,9 @@ export default function CartDrawer({ isOpen, onClose }) {
               <span style={{ fontWeight: '700' }}>المجموع</span>
               <span style={{ fontWeight: '800', fontSize: '1.1rem' }}>{total} ر.س</span>
             </div>
-            <button onClick={onClose} style={{ width: '100%', padding: '13px', backgroundColor: '#1A1A1A', color: '#FFFFFF', borderRadius: '8px', fontWeight: '800' }}>
+            <Link to="/checkout" onClick={onClose} style={{ display: 'block', width: '100%', padding: '13px', backgroundColor: '#1A1A1A', color: '#FFFFFF', borderRadius: '8px', textAlign: 'center', fontWeight: '800' }}>
               إتمام الطلب
-            </button>
+            </Link>
           </div>
         )}
       </div>

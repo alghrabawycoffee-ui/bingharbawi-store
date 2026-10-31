@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
-import { FiShoppingCart, FiSearch, FiMenu } from 'react-icons/fi'
+import { FiShoppingCart, FiSearch } from 'react-icons/fi'
 import CartDrawer from '../cart/CartDrawer'
 
 export default function Header() {
@@ -11,18 +11,15 @@ export default function Header() {
 
   return (
     <>
-      <header style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #f5f5f5', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', gap: '12px' }}>
-          <button style={{ color: '#1A1A1A' }}>
-            <FiMenu size={24} />
-          </button>
-          <Link to="/" style={{ fontSize: '1.3rem', fontWeight: '800', color: '#1A1A1A', flex: 1, textAlign: 'center' }}>
-            بن الغرباوي
+      <header style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #f0f0f0', position: 'sticky', top: 0, zIndex: 100 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', gap: '12px', maxWidth: '1200px', margin: '0 auto' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '1.3rem', fontWeight: '800', color: '#1A1A1A' }}>بن الغرباوي</span>
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <Link to="/" style={{ color: '#1A1A1A' }}>
+            <button style={{ color: '#1A1A1A' }}>
               <FiSearch size={22} />
-            </Link>
+            </button>
             <button onClick={() => setDrawerOpen(true)} style={{ position: 'relative', color: '#1A1A1A' }}>
               <FiShoppingCart size={22} />
               {count > 0 && (

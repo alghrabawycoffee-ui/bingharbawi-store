@@ -1,19 +1,49 @@
 import { Link } from 'react-router-dom'
+import { useCart } from '../../context/CartContext'
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart()
+
   return (
-    <Link to={/product/} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-      <div style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', backgroundColor: '#f5f3f0' }}>
+    <div style={{ 
+      backgroundColor: '#fff', 
+      borderRadius: '16px', 
+      overflow: 'hidden', 
+      boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+      transition: 'transform 0.3s ease',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
+      <Link to={/product/} style={{ display: 'block', overflow: 'hidden' }}>
         <img 
           src={product.image} 
           alt={product.name} 
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          style={{ width: '100%', height: '240px', objectFit: 'cover', transition: 'transform 0.5s' }} 
         />
+      </Link>
+      <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '10px', color: '#3b2314' }}>{product.name}</h3>
+        <p style={{ color: '#d97706', fontWeight: '800', fontSize: '1.3rem', marginBottom: '20px' }}>{product.price} ج.م</p>
+        
+        <button 
+          onClick={() => addToCart(product)}
+          disabled={!product.inStock}
+          style={{ 
+            marginTop: 'auto',
+            width: '100%', 
+            padding: '12px', 
+            backgroundColor: product.inStock ? '#3b2314' : '#ccc', 
+            color: '#fff', 
+            border: 'none', 
+            borderRadius: '10px', 
+            fontWeight: '700', 
+            fontSize: '1rem', 
+            cursor: product.inStock ? 'pointer' : 'not-allowed'
+          }}
+        >
+          {product.inStock ? 'أضف للسلة 🛒' : 'غير متوفر'}
+        </button>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        <span style={{ fontWeight: '600', letterSpacing: '0.01em' }}>{product.name}</span>
-        <span style={{ color: 'var(--text-secondary)' }}>{product.price} ج.م</span>
-      </div>
-    </Link>
+    </div>
   )
 }

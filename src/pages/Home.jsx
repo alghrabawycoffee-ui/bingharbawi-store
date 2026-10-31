@@ -17,13 +17,38 @@ export default function Home() {
           justifyContent: 'center',
           textAlign: 'center',
           color: '#ffffff',
-          backgroundImage: 'linear-gradient(rgba(26, 16, 10, 0.6), rgba(26, 16, 10, 0.6)), url("https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          overflow: 'hidden'
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '26px', maxWidth: '1100px', padding: '0 20px' }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0
+          }}
+        >
+          <source src="https://api.yemenicafe.com/storage/content/videos/GCoU4WkIGIbq4VIOAErralJIczPwZYLFMAkg2ytp.webm" type="video/webm" />
+        </video>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(rgba(26, 16, 10, 0.6), rgba(26, 16, 10, 0.6))',
+            zIndex: 1
+          }}
+        ></div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '26px', maxWidth: '1100px', padding: '0 20px', position: 'relative', zIndex: 2 }}>
           <h1 style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: '800', lineHeight: '1.12', letterSpacing: '-0.01em', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
             اكتشف نوع القهوة اللي يناسبك
           </h1>
@@ -73,7 +98,7 @@ export default function Home() {
               <h3 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: '900', color: '#ffffff', lineHeight: '1.25', fontFamily: 'Cairo, Tajawal, sans-serif' }}>بن الغرباوي</h3>
             </div>
             <p style={{ color: '#cccccc', fontSize: '1.02rem', lineHeight: '1.8', fontWeight: '400' }}>
-              منذ عقود، ورثنا أصول تحميص البن اليمني الأصيل، نختار أجود حبوب البن من المزارع المختارة بعناية، ونحمصها على دفعات صغيرة وفق أسرار متوارثة، لنحافظ على نكهتها الغنية وعطرها الفريد. في بن الغرباوي، كل فنجان قهوة يحمل قصة أصالة وإرث عريق يروي عبق الضيافة العربية.
+              منذ عقود، ورثنا أصول تحميص البن اليمني الأصيل، نختار أجود حبوب البن من المزارع المختارة بعناية، ونحمصها على دفعات صغيرة وفق أسرار متوارثة، لنحافظ على nكهتها الغنية وعطرها الفريد. في بن الغرباوي، كل فنجان قهوة يحمل قصة أصالة وإرث عريق يروي عبق الضيافة العربية.
             </p>
             <div>
               <Link

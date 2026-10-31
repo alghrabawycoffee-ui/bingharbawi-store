@@ -17,9 +17,13 @@ export default function ProductCard({ product }) {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#4a2e1b'
+        e.currentTarget.style.transform = 'translateY(-8px)'
+        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)'
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.backgroundColor = '#2a1a12'
+        e.currentTarget.style.transform = 'translateY(0)'
+        e.currentTarget.style.boxShadow = 'none'
       }}
     >
       <div style={{ width: '100%', height: '250px', overflow: 'hidden' }}>
@@ -27,7 +31,13 @@ export default function ProductCard({ product }) {
           <img
             src={product.image}
             alt={product.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease-in-out' }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)'
+            }}
           />
         </Link>
       </div>

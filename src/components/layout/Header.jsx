@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
 import { useAuth } from '../../context/AuthContext'
@@ -6,10 +7,36 @@ export default function Header() {
   const { getCartCount } = useCart()
   const { user, isAdmin, logout } = useAuth()
   const count = getCartCount()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100, backgroundColor: 'transparent' }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBlock: '18px' }}>
+    <header
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        backgroundColor: scrolled ? 'rgba(26, 16, 10, 0.98)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(8px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(212, 175, 55, 0.18)' : 'none',
+        transition: 'all 0.3s ease-in-out'
+      }}
+    >
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBlock: '16px' }}>
         <nav style={{ display: 'flex', alignItems: 'center', gap: '32px', flexWrap: 'wrap' }}>
           <Link to="/" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>الرئيسية</Link>
           <Link to="/products" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>منتجاتنا</Link>

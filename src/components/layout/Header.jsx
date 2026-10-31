@@ -23,17 +23,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const mobileMenuStyle = 
-    @media (max-width: 968px) {
-      .desktop-nav, .desktop-actions {
-        display: none !important;
-      }
-      .mobile-menu-btn {
-        display: block !important;
-      }
-    }
-  
-
   return (
     <header
       style={{
@@ -51,13 +40,12 @@ export default function Header() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBlock: '14px' }}>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{ display: 'none', background: 'none', border: 'none', color: '#ffffff', fontSize: '1.8rem', cursor: 'pointer' }}
-          className="mobile-menu-btn"
+          style={{ background: 'none', border: 'none', color: '#ffffff', fontSize: '1.8rem', cursor: 'pointer' }}
         >
           ☰
         </button>
 
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '28px', flexWrap: 'wrap' }} className="desktop-nav">
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '28px', flexWrap: 'wrap' }}>
           <Link to="/" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>الرئيسية</Link>
           <Link to="/products" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>منتجاتنا</Link>
           <Link to="/about" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>من نحن</Link>
@@ -69,7 +57,7 @@ export default function Header() {
           <span style={{ fontSize: '1.7rem', fontWeight: '900', letterSpacing: '-0.01em', color: '#d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>بن الغرباوي</span>
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }} className="desktop-actions">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
           <Link to="/cart" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontWeight: '600', color: '#ffffff', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="9" cy="21" r="1"></circle>
@@ -109,8 +97,6 @@ export default function Header() {
           </div>
         </div>
       )}
-
-      <style dangerouslySetInnerHTML={{ __html: mobileMenuStyle }} />
     </header>
   )
 }

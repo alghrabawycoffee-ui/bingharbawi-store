@@ -45,7 +45,7 @@ export default function Home() {
               fontFamily: 'Cairo, Tajawal, sans-serif'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor: '#b8941f'
+              e.currentTarget.style.backgroundColor = '#b8941f'
               e.currentTarget.style.transform = 'scale(1.05)'
             }}
             onMouseLeave={(e) => {

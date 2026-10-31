@@ -23,7 +23,7 @@ export default function Header() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '32px' }}>
             <Link to="/login" style={{ fontSize: '0.95rem', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: '600' }}>Account</Link>
             <button onClick={() => setCartOpen(true)} style={{ fontSize: '0.95rem', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              Cart {count > 0 ? () : '(0)'}
+              Cart {count > 0 ? '(' + count + ')' : '(0)'}
             </button>
           </div>
         </div>

@@ -23,7 +23,7 @@ export default function Header() {
                 <span style={{ fontSize: '0.88rem', color: 'var(--text-tertiary)' }}>Al Gharbawy Coffee</span>
               </div>
             </Link>
-            <nav style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-7)' }} className="nav-main">
+            <nav className="nav-main" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-7)' }}>
               <Link to="/" style={{ fontWeight: '600' }}>الرئيسية</Link>
               <Link to="/products" style={{ fontWeight: '600' }}>المتجر</Link>
               {user && <Link to="/my-orders" style={{ fontWeight: '600' }}>طلباتي</Link>}
@@ -49,12 +49,6 @@ export default function Header() {
       </header>
 
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
-
-      <style>{
-        @media (max-width: 920px) {
-          .nav-main { display: none !important; }
-        }
-      }</style>
     </>
   )
 }

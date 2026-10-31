@@ -26,22 +26,13 @@ export default function Home() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 'var(--space-6)' }}>
             {featured.map((product) => (
-              <div key={product.id} style={{ gridColumn: 'span 3' }} className="product-grid-item">
+              <div key={product.id} className="product-grid-item" style={{ gridColumn: 'span 3' }}>
                 <ProductCard product={product} />
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      <style>{
-        @media (max-width: 1180px) {
-          .product-grid-item { grid-column: span 6; }
-        }
-        @media (max-width: 720px) {
-          .product-grid-item { grid-column: span 12; }
-        }
-      }</style>
     </div>
   )
 }

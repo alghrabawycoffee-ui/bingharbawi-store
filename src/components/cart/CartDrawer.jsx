@@ -23,7 +23,7 @@ export default function CartDrawer({ isOpen, onClose }) {
         <div style={{ padding: '14px 16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
             <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>
-              {total >= freeShipping ? 'أحصل على شحن مجاني الآن' : أضف  ج.م للحصول على شحن مجاني}
+              {total >= freeShipping ? 'أحصل على شحن مجاني الآن' : 'أضف ' + (freeShipping - total) + ' ج.م للحصول على شحن مجاني'}
             </span>
           </div>
           <div style={{ width: '100%', height: '6px', backgroundColor: '#f1f1f1', borderRadius: '999px', overflow: 'hidden' }}>

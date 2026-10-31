@@ -23,6 +23,17 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const mobileMenuStyle = 
+    @media (max-width: 968px) {
+      .desktop-nav, .desktop-actions {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: block !important;
+      }
+    }
+  
+
   return (
     <header
       style={{
@@ -99,16 +110,7 @@ export default function Header() {
         </div>
       )}
 
-      <style>{
-        @media (max-width: 968px) {
-          .desktop-nav, .desktop-actions {
-            display: none !important;
-          }
-          .mobile-menu-btn {
-            display: block !important;
-          }
-        }
-      }</style>
+      <style dangerouslySetInnerHTML={{ __html: mobileMenuStyle }} />
     </header>
   )
 }

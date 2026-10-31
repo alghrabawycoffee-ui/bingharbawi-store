@@ -4,8 +4,6 @@ import { FiX, FiMinus, FiPlus, FiTrash2 } from 'react-icons/fi'
 export default function CartDrawer({ isOpen, onClose }) {
   const { cart, increaseQuantity, decreaseQuantity, removeFromCart, getCartTotal } = useCart()
   const total = getCartTotal()
-  const freeShipping = 199
-  const progress = Math.min((total / freeShipping) * 100, 100)
 
   if (!isOpen) return null
 
@@ -20,18 +18,7 @@ export default function CartDrawer({ isOpen, onClose }) {
           </button>
         </div>
 
-        <div style={{ padding: '14px 16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>
-              {total >= freeShipping ? 'أحصل على شحن مجاني الآن' : 'أضف ' + (freeShipping - total) + ' ج.م للحصول على شحن مجاني'}
-            </span>
-          </div>
-          <div style={{ width: '100%', height: '6px', backgroundColor: '#f1f1f1', borderRadius: '999px', overflow: 'hidden' }}>
-            <div style={{ width: progress + '%', height: '100%', backgroundColor: '#22c55e', transition: 'width 0.3s' }}></div>
-          </div>
-        </div>
-
-        <div style={{ flex: 1, overflowY: 'auto', padding: '0 16px' }}>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '16px' }}>
           {cart.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px 20px', color: '#6b6b6b' }}>
               <p>السلة فارغة</p>
@@ -83,16 +70,6 @@ export default function CartDrawer({ isOpen, onClose }) {
                 <span style={{ fontWeight: '800' }}>الإجمالي</span>
                 <span style={{ fontWeight: '800', fontSize: '1.2rem', color: '#F5B000' }}>{total} ج.م</span>
               </div>
-            </div>
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
-              <input
-                type="text"
-                placeholder="كود الخصم"
-                style={{ flex: 1, padding: '12px', border: '1px solid #f1f1f1', borderRadius: '8px' }}
-              />
-              <button style={{ padding: '12px 24px', backgroundColor: '#FFC107', borderRadius: '8px', fontWeight: '700' }}>
-                تطبيق
-              </button>
             </div>
             <button onClick={onClose} style={{ width: '100%', padding: '14px', backgroundColor: '#FFC107', borderRadius: '12px', fontWeight: '800', fontSize: '1rem' }}>
               متابعة الطلب

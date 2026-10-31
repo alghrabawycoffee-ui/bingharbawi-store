@@ -74,9 +74,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container" style={{ paddingTop: '30px', paddingBottom: '100px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
+      <div className="container" style={{ paddingTop: '30px', paddingBottom: '40px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
         <section>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
             <h2 style={{ fontSize: '1.15rem', fontWeight: '800' }}>الأكثر مبيعاً</h2>
           </div>
           <div style={{ display: 'flex', gap: '14px', overflowX: 'auto', paddingBottom: '8px' }}>
@@ -87,7 +87,7 @@ export default function Home() {
         </section>
 
         <section>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
             <h2 style={{ fontSize: '1.15rem', fontWeight: '800' }}>عروض خاصة</h2>
           </div>
           <div style={{ display: 'flex', gap: '14px', overflowX: 'auto', paddingBottom: '8px' }}>
@@ -96,14 +96,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-      </div>
-
-      <div style={{ position: 'fixed', bottom: '16px', left: '16px', backgroundColor: '#1A1A1A', color: '#FFFFFF', padding: '10px 18px', borderRadius: '50px', display: 'flex', alignItems: 'center', gap: '8px', zIndex: 90 }}>
-        <span style={{ fontWeight: '700' }}>عربة التسوق</span>
-        <span style={{ backgroundColor: '#FFFFFF', color: '#1A1A1A', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: '800' }}>0</span>
-      </div>
-      <div style={{ position: 'fixed', bottom: '16px', right: '16px', backgroundColor: '#FFC107', color: '#1A1A1A', padding: '10px 22px', borderRadius: '50px', fontWeight: '800', zIndex: 90 }}>
-        تسوق الآن
       </div>
     </div>
   )

@@ -19,10 +19,8 @@ export default function BottomNav() {
         right: 0,
         backgroundColor: '#1a100a',
         borderTop: '1px solid rgba(212, 175, 55, 0.3)',
-        zIndex: 1000,
-        display: 'none'
+        zIndex: 1000
       }}
-      className="bottom-nav"
     >
       <div
         style={{

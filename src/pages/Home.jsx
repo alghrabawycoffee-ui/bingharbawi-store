@@ -73,7 +73,7 @@ export default function Home() {
               <h3 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: '900', color: '#ffffff', lineHeight: '1.25', fontFamily: 'Cairo, Tajawal, sans-serif' }}>بن الغرباوي</h3>
             </div>
             <p style={{ color: '#cccccc', fontSize: '1.02rem', lineHeight: '1.8', fontWeight: '400' }}>
-              منذ عقود، ورثنا أصول تحميص البن اليمني الأصيل، نختار أجود حبوب البن من المزارع المختارة بعناية، ونحمصها على دفعات صغيرة وفق أسرار متوارثة، لنحافظ على نكهتها الغنية وعطرها الفريد. في بن الغرباوي، كل fنجان قهوة يحمل قصة أصالة وإرث عريق يروي عبق الضيافة العربية.
+              منذ عقود، ورثنا أصول تحميص البن اليمني الأصيل، نختار أجود حبوب البن من المزارع المختارة بعناية، ونحمصها على دفعات صغيرة وفق أسرار متوارثة، لنحافظ على نكهتها الغنية وعطرها الفريد. في بن الغرباوي، كل فنجان قهوة يحمل قصة أصالة وإرث عريق يروي عبق الضيافة العربية.
             </p>
             <div>
               <Link
@@ -135,7 +135,7 @@ export default function Home() {
               color: '#d4af37',
               fontWeight: '700',
               fontSize: '1rem',
-              transition: 'all 0.3s ease-in-intion'
+              transition: 'all 0.3s ease-in-out',
               fontFamily: 'Cairo, Tajawal, sans-serif',
               backgroundColor: 'transparent'
             }}

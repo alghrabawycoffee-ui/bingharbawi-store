@@ -9,16 +9,19 @@ export default function ProductCard({ product }) {
     <div
       style={{
         backgroundColor: '#FFFFFF',
-        borderRadius: '16px',
+        borderRadius: '12px',
         overflow: 'hidden',
-        boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative'
       }}
     >
+      <span style={{ position: 'absolute', top: '10px', right: '10px', backgroundColor: '#D9534F', color: '#FFFFFF', padding: '4px 8px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: '700', zIndex: 1 }}>
+        جديد
+      </span>
       <Link to={/product/} style={{ display: 'block' }}>
-        <div style={{ width: '100%', height: '170px', overflow: 'hidden', backgroundColor: '#f9f9f9' }}>
+        <div style={{ width: '100%', height: '150px', overflow: 'hidden' }}>
           <img
             src={product.image}
             alt={product.name}
@@ -28,11 +31,14 @@ export default function ProductCard({ product }) {
       </Link>
       <div style={{ padding: '12px 14px 16px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
         <Link to={/product/}>
-          <h3 style={{ fontSize: '0.92rem', fontWeight: '700', color: '#1A1A1A', lineHeight: '1.7', minHeight: '46px' }}>
+          <h3 style={{ fontSize: '0.9rem', fontWeight: '700', color: '#2E2E2E', lineHeight: '1.7', minHeight: '44px' }}>
             {product.name}
           </h3>
         </Link>
-        <span style={{ fontWeight: '800', color: '#D97706', fontSize: '1rem' }}>{product.price} ج.م</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontWeight: '800', color: '#F5B000', fontSize: '1rem' }}>{product.price} ج.م</span>
+          <span style={{ fontSize: '0.8rem', color: '#6b6b6b', textDecoration: 'line-through' }}>{Math.round(product.price * 1.2)} ج.م</span>
+        </div>
       </div>
       <button
         onClick={() => addToCart(product)}
@@ -41,11 +47,11 @@ export default function ProductCard({ product }) {
           position: 'absolute',
           bottom: '12px',
           left: '12px',
-          width: '34px',
-          height: '34px',
-          borderRadius: '50%',
-          backgroundColor: product.inStock ? '#D97706' : '#d1d5db',
-          color: '#ffffff',
+          width: '32px',
+          height: '32px',
+          borderRadius: '8px',
+          backgroundColor: '#FFC107',
+          color: '#2E2E2E',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

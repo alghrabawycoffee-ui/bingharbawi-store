@@ -14,19 +14,19 @@ export default function Home() {
   const { products } = useProducts()
 
   return (
-    <div style={{ backgroundColor: '#FFFFFF', paddingBottom: '90px' }}>
-      <div className="container" style={{ paddingTop: '14px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <div style={{ backgroundColor: '#FFFFFF' }}>
+      <div className="container" style={{ paddingTop: '14px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
         <div style={{ position: 'relative' }}>
-          <FiSearch size={18} style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#6b6b6b' }} />
+          <FiSearch size={18} style={{ position: 'absolute', right: '18px', top: '50%', transform: 'translateY(-50%)', color: '#6b6b6b' }} />
           <input
             type="text"
             placeholder="ابحث عن منتج..."
             style={{
               width: '100%',
-              padding: '12px 44px 12px 16px',
-              borderRadius: '999px',
+              padding: '12px 48px 12px 18px',
+              borderRadius: '50px',
               border: '1px solid #f1f1f1',
-              backgroundColor: '#f8f9fa',
+              backgroundColor: '#f9f9f9',
               fontSize: '0.95rem'
             }}
           />
@@ -37,13 +37,14 @@ export default function Home() {
             <button
               key={cat.id}
               style={{
-                padding: '9px 18px',
-                borderRadius: '999px',
-                backgroundColor: '#f8f9fa',
+                padding: '9px 20px',
+                borderRadius: '50px',
+                backgroundColor: '#f9f9f9',
                 border: '1px solid #f1f1f1',
                 whiteSpace: 'nowrap',
                 fontSize: '0.9rem',
-                fontWeight: '600'
+                fontWeight: '600',
+                color: '#2E2E2E'
               }}
             >
               {cat.name}
@@ -51,7 +52,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', height: '240px' }}>
+        <div style={{ width: '100%', borderRadius: '12px', overflow: 'hidden', height: '230px' }}>
           <img
             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop"
             alt="banner"
@@ -59,8 +60,8 @@ export default function Home() {
           />
         </div>
 
-        <section>
-          <h2 style={{ fontSize: '1.05rem', fontWeight: '800', marginBottom: '12px' }}>جميع المنتجات</h2>
+        <section style={{ paddingBottom: '90px' }}>
+          <h2 style={{ fontSize: '1.05rem', fontWeight: '800', marginBottom: '12px', color: '#2E2E2E' }}>الأكثر مبيعاً</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '12px' }}>
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />

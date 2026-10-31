@@ -11,15 +11,17 @@ export default function ProductCard({ product }) {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
+        boxShadow: '0 10px 20px rgba(0,0,0,0.05)',
+        overflow: 'hidden',
         transition: 'all 0.3s ease-in-out'
       }}
     >
-      <div style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', backgroundColor: '#f8f6f3' }}>
+      <div style={{ width: '100%', height: '250px', overflow: 'hidden', backgroundColor: '#f8f6f3' }}>
         <Link to={/product/} style={{ display: 'block', width: '100%', height: '100%' }}>
           <img
             src={product.image}
             alt={product.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.3s ease-in-out' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease-in-out' }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.05)'
             }}
@@ -30,7 +32,7 @@ export default function ProductCard({ product }) {
         </Link>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '20px 16px 24px', flex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '20px 18px 24px', flex: 1 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
           <Link to={/product/}>
             <h3 style={{ fontSize: '1.05rem', fontWeight: '700', color: '#3b2314', lineHeight: '1.8', textAlign: 'center' }}>
@@ -57,11 +59,13 @@ export default function ProductCard({ product }) {
           onMouseEnter={(e) => {
             if (product.inStock) {
               e.currentTarget.style.backgroundColor = '#d4af37'
+              e.currentTarget.style.color = '#ffffff'
             }
           }}
           onMouseLeave={(e) => {
             if (product.inStock) {
               e.currentTarget.style.backgroundColor = '#3b2314'
+              e.currentTarget.style.color = '#ffffff'
             }
           }}
         >

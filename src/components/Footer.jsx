@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--border-light)', backgroundColor: 'var(--surface)', marginTop: 'clamp(var(--space-11), 10vw, var(--space-12))' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 'var(--space-8)', paddingBlock: 'clamp(var(--space-9), 8vw, var(--space-10))' }}>
-        <div style={{ gridColumn: '1 / span 5', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }} className="footer-brand">
+        <div className="footer-brand" style={{ gridColumn: '1 / span 5', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'radial-gradient(circle, rgba(185, 154, 93, 0.18) 0%, transparent 70%)', border: '1px solid rgba(185, 154, 93, 0.4)' }}>
               <span style={{ fontSize: '1.4rem' }}>☕</span>
@@ -39,12 +39,6 @@ export default function Footer() {
           <p>صُنع بعناية لمحبي القهوة</p>
         </div>
       </div>
-
-      <style>{
-        @media (max-width: 980px) {
-          .footer-brand { grid-column: 1 / -1; }
-        }
-      }</style>
     </footer>
   )
 }

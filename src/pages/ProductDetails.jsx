@@ -13,29 +13,29 @@ export default function ProductDetails() {
 
   if (!product) {
     return (
-      <div style={{ padding: '80px 20px', textAlign: 'center', backgroundColor: '#F4F0EF', minHeight: '60vh' }}>
-        <h2 style={{ fontWeight: '700', color: '#251A16' }}>المنتج غير موجود</h2>
+      <div style={{ padding: '160px 20px 100px', textAlign: 'center', backgroundColor: '#1a100a', minHeight: '100vh' }}>
+        <h2 style={{ fontWeight: '800', color: '#d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>المنتج غير موجود</h2>
       </div>
     )
   }
 
   return (
-    <div style={{ backgroundColor: '#F4F0EF' }}>
-      <div className="container" style={{ paddingBlock: '60px' }}>
-        <Link to="/products" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#654D3C', marginBottom: '40px', fontWeight: '500' }}>
+    <div style={{ backgroundColor: '#1a100a' }}>
+      <div className="container" style={{ padding: '160px 20px 100px' }}>
+        <Link to="/products" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#cccccc', marginBottom: '50px', fontWeight: '600', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
           ← العودة للمنتجات
         </Link>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'start' }}>
-          <div style={{ backgroundColor: '#251A16', borderRadius: '11px', border: '1px solid #EFC7A2', padding: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={product.image} alt={product.name} style={{ width: '100%', maxWidth: '320px', height: 'auto', objectFit: 'contain' }} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(40px, 8vw, 80px)', alignItems: 'center' }}>
+          <div style={{ backgroundColor: '#2a1a12', borderRadius: '12px', overflow: 'hidden' }}>
+            <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', minHeight: '500px', objectFit: 'cover' }} />
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             <div>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '700', color: '#251A16', marginBottom: '16px', lineHeight: '1.3' }}>{product.name}</h1>
-              <p style={{ fontSize: '2rem', fontWeight: '700', color: '#4D311A' }}>{product.price} ج.م</p>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: '800', color: '#ffffff', marginBottom: '16px', lineHeight: '1.3', fontFamily: 'Cairo, Tajawal, sans-serif' }}>{product.name}</h1>
+              <p style={{ fontSize: '2rem', fontWeight: '800', color: '#d4af37' }}>{product.price} ج.م</p>
             </div>
-            <div style={{ height: '1px', backgroundColor: '#EFC7A2' }}></div>
-            <p style={{ color: '#4a3f3a', fontSize: '1.05rem', lineHeight: '1.9' }}>{product.desc}</p>
+            <div style={{ height: '1px', backgroundColor: 'rgba(212, 175, 55, 0.4)' }}></div>
+            <p style={{ color: '#cccccc', fontSize: '1.02rem', lineHeight: '1.9', fontFamily: 'Cairo, Tajawal, sans-serif' }}>{product.desc}</p>
             <button
               onClick={() => addToCart(product)}
               disabled={!product.inStock}
@@ -43,16 +43,26 @@ export default function ProductDetails() {
                 width: '100%',
                 maxWidth: '400px',
                 padding: '16px',
-                borderRadius: '11px',
-                background: product.inStock ? 'linear-gradient(91deg, #232629 0.92%, #4D311A 53.14%, #232629 93.96%)' : '#666',
-                color: '#fff',
-                fontWeight: '600',
+                backgroundColor: 'transparent',
+                color: product.inStock ? '#d4af37' : '#666',
+                fontWeight: '700',
                 fontSize: '1rem',
-                border: '1px solid #EFC7A2',
-                transition: 'transform 0.2s ease'
+                border: product.inStock ? '2px solid #d4af37' : '2px solid #666',
+                transition: 'all 0.3s ease-in-out',
+                fontFamily: 'Cairo, Tajawal, sans-serif'
               }}
-              onMouseEnter={(e) => { if (product.inStock) e.currentTarget.style.transform = 'scale(1.01)' }}
-              onMouseLeave={(e) => { if (product.inStock) e.currentTarget.style.transform = 'scale(1)' }}
+              onMouseEnter={(e) => {
+                if (product.inStock) {
+                  e.currentTarget.style.backgroundColor = '#d4af37'
+                  e.currentTarget.style.color = '#ffffff'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (product.inStock) {
+                  e.currentTarget.style.backgroundColor = 'transparent'
+                  e.currentTarget.style.color = '#d4af37'
+                }
+              }}
             >
               {product.inStock ? 'أضف للسلة' : 'غير متوفر'}
             </button>
@@ -61,10 +71,13 @@ export default function ProductDetails() {
       </div>
 
       {similar.length > 0 && (
-        <section style={{ padding: '80px 0', backgroundColor: '#fff' }}>
+        <section style={{ padding: '100px 20px', backgroundColor: '#1a100a' }}>
           <div className="container">
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: '700', color: '#251A16', marginBottom: '40px', textAlign: 'center' }}>منتجات مشابهة</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px', justifyItems: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '12px', marginBottom: '60px' }}>
+              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: '800', color: '#d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>منتجات مشابهة</h2>
+              <div style={{ width: '80px', height: '2px', backgroundColor: '#d4af37' }}></div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '28px' }}>
               {similar.map((item) => (
                 <ProductCard key={item.id} product={item} />
               ))}

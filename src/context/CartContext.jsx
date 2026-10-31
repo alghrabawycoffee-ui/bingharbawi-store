@@ -5,7 +5,6 @@ const CartContext = createContext()
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([])
 
-  // عشان نحمل السلة لو المستخدم عمل ريفريش
   useEffect(() => {
     const savedCart = localStorage.getItem('bingharbawi_cart')
     if (savedCart) {
@@ -13,7 +12,6 @@ export function CartProvider({ children }) {
     }
   }, [])
 
-  // عشان نحفظ السلة كل ما تتغير
   useEffect(() => {
     localStorage.setItem('bingharbawi_cart', JSON.stringify(cart))
   }, [cart])
@@ -30,8 +28,30 @@ export function CartProvider({ children }) {
     })
   }
 
+  const increaseQuantity = (productId) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    )
+  }
+
+  const decreaseQuantity = (productId) => {
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item) => item.quantity > 0)
+    )
+  }
+
   const removeFromCart = (productId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId))
+  }
+
+  const clearCart = () => {
+    setCart([])
   }
 
   const getCartTotal = () => {
@@ -43,7 +63,18 @@ export function CartProvider({ children }) {
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, getCartTotal, getCartCount }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
+        clearCart,
+        getCartTotal,
+        getCartCount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )

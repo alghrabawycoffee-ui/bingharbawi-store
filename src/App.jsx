@@ -1,9 +1,19 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
-import ProductDetails from './pages/ProductDetails' // استيراد الصفحة الجديدة
+import ProductDetails from './pages/ProductDetails'
+import Checkout from './pages/Checkout'
+import OrderSuccess from './pages/OrderSuccess'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import MyOrders from './pages/MyOrders'
+import AdminLayout from './pages/admin/AdminLayout'
+import Dashboard from './pages/admin/Dashboard'
+import ProductsManage from './pages/admin/ProductsManage'
+import Orders from './pages/admin/Orders'
 
 export default function App() {
   return (
@@ -13,13 +23,21 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/product/:id" element={<ProductDetails />} /> {/* المسار الجديد */}
+          <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-success" element={<OrderSuccess />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/my-orders" element={<MyOrders />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="products" element={<ProductsManage />} />
+            <Route path="orders" element={<Orders />} />
+          </Route>
         </Routes>
       </main>
-      <footer style={{ textAlign: 'center', padding: '20px', backgroundColor: '#3b2314', color: '#fff', marginTop: 'auto' }}>
-        جميع الحقوق محفوظة © بن الغرباوي 2024
-      </footer>
+      <Footer />
     </div>
   )
 }

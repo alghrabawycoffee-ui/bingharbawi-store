@@ -1,13 +1,22 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
   font-family: 'Cairo', system-ui, -apple-system, sans-serif;
-  background: #fdfbf7; /* لون خلفية دافئ شبه البن */
+  background: #fdfbf7;
   color: #2b1d12;
   -webkit-tap-highlight-color: transparent;
+  line-height: 1.6;
 }
 a { 
-  color: #8b5a2b; 
+  color: inherit; 
   text-decoration: none; 
-  transition: all 0.2s ease-in-out;
 }
-a:hover { color: #5c3a1a; }
+button {
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+input, textarea, select {
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+table {
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}

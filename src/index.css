@@ -197,6 +197,10 @@ ul {
 @media (max-width: 1180px) {
   .home-tile { grid-column: span 6; }
 }
+@media (max-width: 1080px) {
+  .hero-intro { grid-column: 1 / -1; }
+  .hero-intro-media { grid-column: 1 / -1; order: -1; }
+}
 @media (max-width: 920px) {
   .section-header {
     flex-direction: column;

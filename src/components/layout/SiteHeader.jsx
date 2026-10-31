@@ -18,7 +18,7 @@ export default function SiteHeader() {
               <span style={{ fontSize: '1.8rem' }}>☕</span>
               <span style={{ fontSize: '1.12rem', fontWeight: '800', letterSpacing: '-0.01em' }}>بن الغرباوي</span>
             </Link>
-            <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }} className="site-nav">
+            <nav className="site-nav" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
               <Link to="/" style={{ fontWeight: '600' }}>الرئيسية</Link>
               <Link to="/products" style={{ fontWeight: '600' }}>المتجر</Link>
               {user && <Link to="/my-orders" style={{ fontWeight: '600' }}>طلباتي</Link>}
@@ -44,12 +44,6 @@ export default function SiteHeader() {
       </header>
 
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
-
-      <style>{
-        @media (max-width: 880px) {
-          .site-nav { display: none !important; }
-        }
-      }</style>
     </>
   )
 }

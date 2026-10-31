@@ -4,7 +4,7 @@ export default function IntroHero() {
   return (
     <section className="section" style={{ paddingTop: 'clamp(56px, 10vw, 96px)' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 'clamp(32px, 8vw, 72px)', alignItems: 'center' }}>
-        <div style={{ gridColumn: '1 / span 6', display: 'flex', flexDirection: 'column', gap: '32px' }} className="hero-intro">
+        <div className="hero-intro" style={{ gridColumn: '1 / span 6', display: 'flex', flexDirection: 'column', gap: '32px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
             <div className="section-eyebrow">
               <span></span>
@@ -24,7 +24,7 @@ export default function IntroHero() {
             <Link to="/products" className="btn btn-ghost">استكشف التشكيلة</Link>
           </div>
         </div>
-        <div style={{ gridColumn: '7 / span 6', position: 'relative' }} className="hero-intro-media">
+        <div className="hero-intro-media" style={{ gridColumn: '7 / span 6', position: 'relative' }}>
           <div style={{ position: 'absolute', inset: '-10% -14% -16% 12%', background: 'radial-gradient(circle, rgba(185, 160, 126, 0.16) 0%, transparent 72%)' }}></div>
           <figure style={{ position: 'relative', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', aspectRatio: '5/6' }}>
             <img 
@@ -35,13 +35,6 @@ export default function IntroHero() {
           </figure>
         </div>
       </div>
-
-      <style>{
-        @media (max-width: 1080px) {
-          .hero-intro { grid-column: 1 / -1; }
-          .hero-intro-media { grid-column: 1 / -1; order: -1; }
-        }
-      }</style>
     </section>
   )
 }

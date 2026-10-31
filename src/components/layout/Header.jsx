@@ -8,6 +8,7 @@ export default function Header() {
   const { user, isAdmin, logout } = useAuth()
   const count = getCartCount()
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,27 +30,35 @@ export default function Header() {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 100,
+        zIndex: 1000,
         backgroundColor: scrolled ? 'rgba(26, 16, 10, 0.98)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(8px)' : 'none',
+        backdropFilter: scrolled ? 'blur(10px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(212, 175, 55, 0.18)' : 'none',
         transition: 'all 0.3s ease-in-out'
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBlock: '16px' }}>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px', flexWrap: 'wrap' }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBlock: '14px' }}>
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{ display: 'none', background: 'none', border: 'none', color: '#ffffff', fontSize: '1.8rem', cursor: 'pointer' }}
+          className="mobile-menu-btn"
+        >
+          ☰
+        </button>
+
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '28px', flexWrap: 'wrap' }} className="desktop-nav">
           <Link to="/" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>الرئيسية</Link>
           <Link to="/products" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>منتجاتنا</Link>
           <Link to="/about" style={{ fontWeight: '600', color: '#ffffff', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>من نحن</Link>
           {isAdmin && <Link to="/admin" style={{ fontWeight: '700', color: '#d4af37', fontSize: '0.98rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>لوحة الإدارة</Link>}
         </nav>
 
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '2rem' }}>☕</span>
-          <span style={{ fontSize: '1.8rem', fontWeight: '900', letterSpacing: '-0.01em', color: '#d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>بن الغرباوي</span>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ fontSize: '1.9rem' }}>☕</span>
+          <span style={{ fontSize: '1.7rem', fontWeight: '900', letterSpacing: '-0.01em', color: '#d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>بن الغرباوي</span>
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '22px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }} className="desktop-actions">
           <Link to="/cart" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontWeight: '600', color: '#ffffff', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="9" cy="21" r="1"></circle>
@@ -60,9 +69,9 @@ export default function Header() {
             <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '26px', height: '26px', borderRadius: '50%', backgroundColor: '#d4af37', color: '#1a100a', fontSize: '0.85rem', fontWeight: '700', padding: '0 6px' }}>{count}</span>
           </Link>
           {user ? (
-            <button onClick={logout} style={{ padding: '9px 24px', borderRadius: '4px', border: '1.5px solid #d4af37', color: '#d4af37', fontWeight: '700', fontSize: '0.92rem', fontFamily: 'Cairo, Tajawal, sans-serif' }}>تسجيل الخروج</button>
+            <button onClick={logout} style={{ padding: '8px 22px', borderRadius: '4px', border: '1.5px solid #d4af37', color: '#d4af37', fontWeight: '700', fontSize: '0.92rem', fontFamily: 'Cairo, Tajawal, sans-serif', cursor: 'pointer' }}>تسجيل الخروج</button>
           ) : (
-            <Link to="/login" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 26px', borderRadius: '4px', backgroundColor: 'transparent', color: '#d4af37', fontWeight: '700', fontSize: '0.92rem', border: '1.5px solid #d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
+            <Link to="/login" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 24px', borderRadius: '4px', backgroundColor: 'transparent', color: '#d4af37', fontWeight: '700', fontSize: '0.92rem', border: '1.5px solid #d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
@@ -72,6 +81,34 @@ export default function Header() {
           )}
         </div>
       </div>
+
+      {menuOpen && (
+        <div style={{ backgroundColor: 'rgba(26, 16, 10, 0.98)', borderTop: '1px solid rgba(212, 175, 55, 0.2)' }}>
+          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBlock: '18px' }}>
+            <Link onClick={() => setMenuOpen(false)} to="/" style={{ color: '#ffffff', fontWeight: '600', fontFamily: 'Cairo, Tajawal, sans-serif' }}>الرئيسية</Link>
+            <Link onClick={() => setMenuOpen(false)} to="/products" style={{ color: '#ffffff', fontWeight: '600', fontFamily: 'Cairo, Tajawal, sans-serif' }}>منتجاتنا</Link>
+            <Link onClick={() => setMenuOpen(false)} to="/about" style={{ color: '#ffffff', fontWeight: '600', fontFamily: 'Cairo, Tajawal, sans-serif' }}>من نحن</Link>
+            <Link onClick={() => setMenuOpen(false)} to="/cart" style={{ color: '#ffffff', fontWeight: '600', fontFamily: 'Cairo, Tajawal, sans-serif' }}>السلة ({count})</Link>
+            {user ? (
+              <button onClick={() => { logout(); setMenuOpen(false) }} style={{ color: '#d4af37', fontWeight: '700', textAlign: 'right', background: 'none', border: 'none', cursor: 'pointer' }}>تسجيل الخروج</button>
+            ) : (
+              <Link onClick={() => setMenuOpen(false)} to="/login" style={{ color: '#d4af37', fontWeight: '700' }}>حسابي</Link>
+            )}
+            {isAdmin && <Link onClick={() => setMenuOpen(false)} to="/admin" style={{ color: '#d4af37', fontWeight: '700' }}>لوحة الإدارة</Link>}
+          </div>
+        </div>
+      )}
+
+      <style>{
+        @media (max-width: 968px) {
+          .desktop-nav, .desktop-actions {
+            display: none !important;
+          }
+          .mobile-menu-btn {
+            display: block !important;
+          }
+        }
+      }</style>
     </header>
   )
 }

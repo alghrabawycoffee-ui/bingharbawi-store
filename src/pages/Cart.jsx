@@ -11,7 +11,7 @@ export default function Cart() {
       <div style={{ padding: '160px 20px 100px', textAlign: 'center', backgroundColor: '#1a100a', minHeight: '100vh' }}>
         <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '16px', color: '#d4af37', fontWeight: '800', fontFamily: 'Cairo, Tajawal, sans-serif' }}>سلة المشتريات</h2>
         <p style={{ color: '#cccccc', marginBottom: '40px' }}>سلتك فارغة حالياً</p>
-        <Link to="/products" style={{ padding: '12px 40px', border: '2px solid #d4af37', color: '#d4af37', fontWeight: '700', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
+        <Link to="/products" style={{ display: 'inline-block', padding: '12px 40px', border: '2px solid #d4af37', color: '#d4af37', fontWeight: '700', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
           تصفح المنتجات
         </Link>
       </div>
@@ -20,7 +20,7 @@ export default function Cart() {
 
   return (
     <div style={{ backgroundColor: '#1a100a', minHeight: '100vh' }}>
-      <div className="container" style={{ padding: '160px 20px 200px' }}>
+      <div className="container" style={{ padding: '160px 20px 220px' }}>
         <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '50px', color: '#d4af37', fontWeight: '800', fontFamily: 'Cairo, Tajawal, sans-serif' }}>سلة المشتريات</h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'start' }}>
@@ -34,13 +34,13 @@ export default function Cart() {
                     <span style={{ color: '#d4af37', fontWeight: '800' }}>{item.price} ج.م</span>
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '14px', border: '1px solid rgba(255, 255, 255, 0.4)', borderRadius: '4px', padding: '8px 16px' }}>
-                    <button onClick={() => decreaseQuantity(item.id)} style={{ fontSize: '1.2rem', color: '#ffffff' }}>-</button>
+                    <button onClick={() => decreaseQuantity(item.id)} style={{ fontSize: '1.2rem', color: '#ffffff', background: 'none', border: 'none', cursor: 'pointer' }}>-</button>
                     <span style={{ fontWeight: '700', minWidth: '20px', textAlign: 'center', color: '#ffffff' }}>{item.quantity}</span>
-                    <button onClick={() => increaseQuantity(item.id)} style={{ fontSize: '1.2rem', color: '#ffffff' }}>+</button>
+                    <button onClick={() => increaseQuantity(item.id)} style={{ fontSize: '1.2rem', color: '#ffffff', background: 'none', border: 'none', cursor: 'pointer' }}>+</button>
                   </div>
-                  <button onClick={() => removeFromCart(item.id)} style={{ color: '#cccccc', fontWeight: '600' }}>إزالة</button>
+                  <button onClick={() => removeFromCart(item.id)} style={{ color: '#cccccc', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer' }}>إزالة</button>
                 </div>
               </div>
             ))}
@@ -75,7 +75,7 @@ export default function Cart() {
             <span style={{ color: '#cccccc', display: 'block' }}>الإجمالي</span>
             <span style={{ fontSize: '1.6rem', fontWeight: '800', color: '#d4af37' }}>{total} ج.م</span>
           </div>
-          <Link to="/checkout" style={{ padding: '14px 48px', border: '2px solid #d4af37', color: '#d4af37', fontWeight: '700', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
+          <Link to="/checkout" style={{ padding: '14px 48px', border: '2px solid #d4af37', color: '#d4af37', fontWeight: '700', fontFamily: 'Cairo, Tajawal, sans-serif', textAlign: 'center' }}>
             إتمام الطلب
           </Link>
         </div>

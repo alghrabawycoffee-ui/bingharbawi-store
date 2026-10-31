@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
+import ProductDetails from './pages/ProductDetails' // استيراد الصفحة الجديدة
 
 export default function App() {
   return (
@@ -12,11 +13,12 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetails />} /> {/* المسار الجديد */}
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
       <footer style={{ textAlign: 'center', padding: '20px', backgroundColor: '#3b2314', color: '#fff', marginTop: 'auto' }}>
-        جميع الحقوق محفوظة © بن الغرباوي 2027
+        جميع الحقوق محفوظة © بن الغرباوي 2024
       </footer>
     </div>
   )

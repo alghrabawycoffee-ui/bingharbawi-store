@@ -13,7 +13,8 @@ export default function ProductCard({ product }) {
         height: '100%',
         borderRadius: '12px',
         overflow: 'hidden',
-        transition: 'all 0.3s ease-in-out'
+        transition: 'all 0.3s ease-in-out',
+        position: 'relative'
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#4a2e1b'
@@ -26,7 +27,7 @@ export default function ProductCard({ product }) {
         e.currentTarget.style.boxShadow = 'none'
       }}
     >
-      <div style={{ width: '100%', height: '250px', overflow: 'hidden' }}>
+      <div style={{ width: '100%', height: '250px', overflow: 'hidden', position: 'relative' }}>
         <Link to={/product/} style={{ display: 'block', width: '100%', height: '100%' }}>
           <img
             src={product.image}
@@ -40,6 +41,33 @@ export default function ProductCard({ product }) {
             }}
           />
         </Link>
+        <button
+          onClick={(e) => {
+            e.preventDefault()
+            addToCart(product)
+          }}
+          disabled={!product.inStock}
+          style={{
+            position: 'absolute',
+            bottom: '12px',
+            left: '12px',
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            backgroundColor: '#d4af37',
+            color: '#1a100a',
+            border: 'none',
+            fontSize: '1.4rem',
+            fontWeight: '700',
+            cursor: product.inStock ? 'pointer' : 'not-allowed',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+          }}
+        >
+          +
+        </button>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', padding: '24px 20px 28px', flex: 1 }}>
@@ -53,37 +81,6 @@ export default function ProductCard({ product }) {
           <p style={{ color: '#d4af37', fontWeight: '800', fontSize: '1.18rem', textAlign: 'center' }}>{product.price} ج.م</p>
         </div>
         <div style={{ width: '80%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
-
-        <button
-          onClick={() => addToCart(product)}
-          disabled={!product.inStock}
-          style={{
-            marginTop: '8px',
-            padding: '10px 32px',
-            backgroundColor: 'transparent',
-            color: '#ffffff',
-            fontWeight: '700',
-            fontSize: '0.95rem',
-            transition: 'all 0.3s ease-in-out',
-            fontFamily: 'Cairo, Tajawal, sans-serif',
-            border: '1px solid rgba(255, 255, 255, 0.7)',
-            borderRadius: '4px'
-          }}
-          onMouseEnter={(e) => {
-            if (product.inStock) {
-              e.currentTarget.style.borderColor = '#d4af37'
-              e.currentTarget.style.color = '#d4af37'
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (product.inStock) {
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.7)'
-              e.currentTarget.style.color = '#ffffff'
-            }
-          }}
-        >
-          {product.inStock ? 'أضف للسلة' : 'غير متوفر'}
-        </button>
       </div>
     </article>
   )

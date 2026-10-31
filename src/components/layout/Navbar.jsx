@@ -17,7 +17,7 @@ export default function Navbar() {
             ☕ بن الغرباوي
           </Link>
 
-          <nav style={{ display: 'flex', gap: '30px', alignItems: 'center' }} className="nav-links">
+          <nav className="nav-links" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
             <Link to="/" style={{ fontWeight: '600' }}>الرئيسية</Link>
             <Link to="/products" style={{ fontWeight: '600' }}>المنتجات</Link>
             {user && <Link to="/my-orders" style={{ fontWeight: '600' }}>طلباتي</Link>}
@@ -43,12 +43,6 @@ export default function Navbar() {
       </header>
 
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
-
-      <style>{
-        @media (max-width: 768px) {
-          .nav-links { display: none !important; }
-        }
-      }</style>
     </>
   )
 }

@@ -56,7 +56,7 @@ export default function Cart() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: '#654D3C' }}>
                   <span>الشحن</span>
-                  <span>{shipping === 0 ? 'مجاني' : ${shipping} ج.م}</span>
+                  <span>{shipping === 0 ? 'مجاني' : shipping + ' ج.م'}</span>
                 </div>
                 <div style={{ height: '1px', backgroundColor: '#EFC7A2' }}></div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>

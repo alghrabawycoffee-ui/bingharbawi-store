@@ -10,15 +10,20 @@ export default function ProductCard({ product }) {
       borderRadius: '16px', 
       overflow: 'hidden', 
       boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-      transition: 'transform 0.3s ease',
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
       display: 'flex',
       flexDirection: 'column'
-    }}>
+    }}
+    onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.08)'; }}
+    onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)'; }}
+    >
       <Link to={/product/} style={{ display: 'block', overflow: 'hidden' }}>
         <img 
           src={product.image} 
           alt={product.name} 
           style={{ width: '100%', height: '240px', objectFit: 'cover', transition: 'transform 0.5s' }} 
+          onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
         />
       </Link>
       <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>

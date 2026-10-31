@@ -23,7 +23,7 @@ export default function Header() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '24px' }}>
             <Link to="/login" style={{ fontWeight: '600', fontSize: '0.98rem' }}>حسابي</Link>
             <button onClick={() => setCartOpen(true)} style={{ fontWeight: '600', fontSize: '0.98rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              السلة {count > 0 ? () : '(0)'}
+              السلة {count > 0 ? '(' + count + ')' : '(0)'}
             </button>
           </div>
         </div>

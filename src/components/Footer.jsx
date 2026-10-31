@@ -2,25 +2,49 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid var(--color-border-light)', backgroundColor: 'var(--color-surface)', marginTop: '80px' }}>
-      <div className="container" style={{ padding: '50px 24px 30px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', alignItems: 'center', textAlign: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ fontSize: '1.8rem' }}>☕</span>
-            <span style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--color-primary)' }}>بن الغرباوي</span>
+    <footer style={{ borderTop: '1px solid var(--border-light)', backgroundColor: 'var(--surface)', marginTop: 'clamp(var(--space-11), 10vw, var(--space-12))' }}>
+      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 'var(--space-8)', paddingBlock: 'clamp(var(--space-9), 8vw, var(--space-10))' }}>
+        <div style={{ gridColumn: '1 / span 5', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }} className="footer-brand">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'radial-gradient(circle, rgba(185, 154, 93, 0.18) 0%, transparent 70%)', border: '1px solid rgba(185, 154, 93, 0.4)' }}>
+              <span style={{ fontSize: '1.4rem' }}>☕</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontWeight: '800', fontSize: '1.12rem' }}>بن الغرباوي</span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-tertiary)' }}>متجر القهوة الفاخرة</span>
+            </div>
           </div>
-          <p style={{ color: 'var(--color-text-light)', maxWidth: '420px' }}>متجر متخصص في اختيار وتحميص أجود حبوب البن لتقديم تجربة قهوة استثنائية.</p>
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '380px' }}>متجر متخصص في اختيار حبوب البن المحمصة بعناية، لتقديم نكهات نقية ومتوازنة لمحبي القهوة الأصيلة.</p>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', flexWrap: 'wrap', fontWeight: '600' }}>
-          <Link to="/">الرئيسية</Link>
-          <Link to="/products">المتجر</Link>
-          <Link to="/cart">السلة</Link>
-          <Link to="/login">حسابي</Link>
+        <div style={{ gridColumn: '7 / span 3', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+          <span style={{ fontWeight: '800' }}>التصفح</span>
+          <nav style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', color: 'var(--text-secondary)' }}>
+            <Link to="/">الرئيسية</Link>
+            <Link to="/products">المتجر</Link>
+            <Link to="/cart">السلة</Link>
+          </nav>
         </div>
-        <div style={{ paddingTop: '24px', borderTop: '1px solid var(--color-border-light)', textAlign: 'center', color: 'var(--color-text-light)', fontSize: '0.98rem' }}>
-          <p>جميع الحقوق محفوظة © بن الغرباوي {new Date().getFullYear()}</p>
+        <div style={{ gridColumn: '10 / span 3', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+          <span style={{ fontWeight: '800' }}>الحساب</span>
+          <nav style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', color: 'var(--text-secondary)' }}>
+            <Link to="/login">تسجيل الدخول</Link>
+            <Link to="/register">إنشاء حساب</Link>
+            <Link to="/my-orders">طلباتي</Link>
+          </nav>
         </div>
       </div>
+      <div style={{ borderTop: '1px solid var(--border-light)' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: 'var(--space-5)', flexWrap: 'wrap', gap: 'var(--space-3)', color: 'var(--text-tertiary)', fontSize: '0.98rem' }}>
+          <p>© {new Date().getFullYear()} بن الغرباوي. جميع الحقوق محفوظة.</p>
+          <p>صُنع بعناية لمحبي القهوة</p>
+        </div>
+      </div>
+
+      <style>{
+        @media (max-width: 980px) {
+          .footer-brand { grid-column: 1 / -1; }
+        }
+      }</style>
     </footer>
   )
 }

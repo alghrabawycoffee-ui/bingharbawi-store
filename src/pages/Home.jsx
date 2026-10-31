@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useProducts } from '../context/ProductContext'
-import Hero from '../components/home/Hero'
+import HeroSection from '../components/home/HeroSection'
 import ProductCard from '../components/product/ProductCard'
 
 export default function Home() {
@@ -9,24 +9,39 @@ export default function Home() {
 
   return (
     <div>
-      <Hero />
-      
+      <HeroSection />
+
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <div className="section-title-group">
-              <h2>مختاراتنا</h2>
-              <p>أكثر ما يميز متجر بن الغرباوي من أجود الخلطات</p>
+            <div className="section-header__text">
+              <div className="section-header__eyebrow">
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--accent)' }}></span>
+                مختاراتنا المميزة
+              </div>
+              <h2 className="section-header__title">أكثر ما يطلبه عشاق القهوة</h2>
+              <p className="section-header__subtitle">خلطات متوازنة بعناية، مثالية لكل وقت من اليوم</p>
             </div>
-            <Link to="/products" className="btn btn-ghost">عرض كل المنتجات</Link>
+            <Link to="/products" className="link-arrow">عرض جميع المنتجات</Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '28px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 'var(--space-6)' }}>
             {featured.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <div key={product.id} style={{ gridColumn: 'span 3' }} className="product-grid-item">
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         </div>
       </section>
+
+      <style>{
+        @media (max-width: 1180px) {
+          .product-grid-item { grid-column: span 6; }
+        }
+        @media (max-width: 720px) {
+          .product-grid-item { grid-column: span 12; }
+        }
+      }</style>
     </div>
   )
 }

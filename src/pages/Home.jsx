@@ -2,96 +2,68 @@ import { Link } from 'react-router-dom'
 import { useProducts } from '../context/ProductContext'
 import ProductCard from '../components/product/ProductCard'
 
-const categories = [
-  { id: 'all', name: 'الكل' },
-  { id: 'بن تركي', name: 'بن تركي' },
-  { id: 'بن برازيلي', name: 'بن برازيلي' },
-  { id: 'خلطات', name: 'خلطات' },
-  { id: 'مقاهي مختصة', name: 'مقاهي مختصة' },
-]
-
 export default function Home() {
   const { products } = useProducts()
   const featured = products.slice(0, 4)
 
   return (
-    <div style={{ backgroundColor: '#fdfbf7' }}>
-      <section style={{ 
-        position: 'relative', 
-        height: '82vh', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)), url("https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1920&auto=format&fit=crop")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        color: '#fff',
-        textAlign: 'center',
-        padding: '20px'
-      }}>
-        <div style={{ maxWidth: '860px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px' }}>
-          <h1 style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: '900', lineHeight: '1.1', textShadow: '2px 6px 18px rgba(0,0,0,0.35)' }}>
-            أصالة القهوة في كل فنجان
-          </h1>
-          <p style={{ fontSize: 'clamp(1.1rem, 2vw, 1.6rem)', opacity: 0.95, maxWidth: '720px' }}>
-            اكتشف تشكيلتنا الفريدة من أجود أنواع البن المحمص بعناية لتجربة لا تُنسى
-          </p>
-          <Link to="/products" style={{ 
-            marginTop: '16px',
-            padding: '16px 48px', 
-            backgroundColor: '#d97706', 
-            color: '#fff', 
-            borderRadius: '999px', 
-            fontSize: '1.08rem', 
-            fontWeight: '800',
-            boxShadow: '0 12px 30px rgba(217, 119, 6, 0.38)'
-          }}>
-            تسوق الآن
-          </Link>
+    <div style={{ backgroundColor: '#F4F0EF' }}>
+      <section style={{ position: 'relative', height: '100vh', maxHeight: '100vh', overflow: 'hidden', background: '#060000' }}>
+        <video autoPlay muted loop playsInline preload="metadata" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+          <source src="https://api.yemenicafe.com/storage/content/videos/GCoU4WkIGIbq4VIOAErralJIczPwZYLFMAkg2ytp.webm" type="video/webm" />
+        </video>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.6) 100%)' }}></div>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '20px' }}>
+          <div style={{ maxWidth: '1100px' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', fontWeight: '700', color: '#fff', textTransform: 'uppercase', lineHeight: '1.2', marginBottom: '24px', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+              اكتشف نوع القهوة اللي يناسبك
+            </h1>
+            <p style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)', color: '#f0f0f0', textTransform: 'uppercase', marginBottom: '40px', textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}>
+              اكتشف تشكيلتنا من انواع القهوة و اختار المفضلة لديك
+            </p>
+            <Link to="/products" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '300px', height: '55px', background: 'linear-gradient(91deg, #232629 0.92%, #4D311A 53.14%, #232629 93.96%)', border: '1px solid #EFC7A2', borderRadius: '11px', color: '#fff', fontSize: '0.95rem', fontWeight: '600', transition: 'transform 0.3s ease' }} 
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+              استكشف قهوتنا
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section style={{ padding: '70px 20px 40px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', marginBottom: '28px' }}>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', color: '#3b2314', fontWeight: '900' }}>التصنيفات</h2>
-          <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '6px' }}>
-            {categories.map((cat) => (
-              <Link
-                key={cat.id}
-                to="/products"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '10px 22px',
-                  borderRadius: '999px',
-                  backgroundColor: '#fff',
-                  color: '#3b2314',
-                  fontWeight: '800',
-                  boxShadow: '0 6px 18px rgba(59, 35, 20, 0.05)',
-                  border: '1px solid rgba(59, 35, 20, 0.04)',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {cat.name}
-              </Link>
+      <section style={{ padding: '80px 0', backgroundColor: '#F4F0EF' }}>
+        <div className="container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '48px' }}>
+            <div>
+              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '700', color: '#251A16', marginBottom: '12px' }}>منتجاتنا</h2>
+              <p style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', color: '#654D3C', fontWeight: '500' }}>اكتشف جوهر الحرفية الحقيقية للقهوة</p>
+            </div>
+            <Link to="/products" style={{ color: '#654D3C', fontSize: '2rem', transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#251A16'} onMouseLeave={(e) => e.currentTarget.style.color = '#654D3C'}>
+              ←
+            </Link>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px', justifyItems: 'center' }}>
+            {featured.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{ padding: '30px 20px 90px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '40px', gap: '16px', flexWrap: 'wrap' }}>
-          <div>
-            <h2 style={{ fontSize: 'clamp(1.9rem, 3vw, 2.6rem)', color: '#3b2314', fontWeight: '900', marginBottom: '10px' }}>أحدث الإضافات</h2>
-            <div style={{ width: '64px', height: '4px', backgroundColor: '#d97706', borderRadius: '2px' }}></div>
+      <section style={{ position: 'relative', minHeight: '70vh', backgroundImage: 'url(https://api.yemenicafe.com/storage/content/images/IU5kfYnEu6UinLCGeoCMDPE0wbRxHH1eGWp9mXw5.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(244, 240, 239, 0.3)' }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 10, minHeight: '70vh', display: 'flex', alignItems: 'center', paddingBlock: '80px' }}>
+          <div style={{ maxWidth: '600px' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: '700', color: '#251A16', marginBottom: '16px', letterSpacing: '0.02em' }}>من نحن</h2>
+            <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)', color: '#251A16', marginBottom: '32px', fontWeight: '400' }}>بن اليمني عبد المعبود</h3>
+            <p style={{ color: '#4a3f3a', fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)', lineHeight: '1.9', marginBottom: '40px' }}>
+              عام 1940 قام عبد المعبود بافتتاح أول فرع لتحميص وطحن حبوب القهوة في منطقة باب اللوق – القاهرة. واستمر من ذلك الحين في تطوير صناعة البن في مصر حتى أصبح له الريادة في مصر والوطن العربي وذلك بإنشاء أكبر مصنع بالوطن العربي والشرق الأوسط لصناعة البن باستخدام أحدث النظم التكنولوجية.
+            </p>
+            <Link to="/about" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '300px', height: '55px', background: 'linear-gradient(91deg, #232629 0.92%, #4D311A 53.14%, #232629 93.96%)', border: '1px solid #EFC7A2', borderRadius: '11px', color: '#fff', fontSize: '0.95rem', fontWeight: '600', transition: 'transform 0.3s ease' }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+              اعرف المزيد
+            </Link>
           </div>
-          <Link to="/products" style={{ fontWeight: '800', color: '#d97706' }}>عرض كل المنتجات ←</Link>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '26px' }}>
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
         </div>
       </section>
     </div>

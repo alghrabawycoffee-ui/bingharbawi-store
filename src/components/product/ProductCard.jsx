@@ -5,60 +5,66 @@ export default function ProductCard({ product }) {
   const { addToCart } = useCart()
 
   return (
-    <div 
-      style={{ 
-        backgroundColor: '#fff', 
-        borderRadius: '20px', 
-        overflow: 'hidden', 
-        boxShadow: '0 8px 24px rgba(59, 35, 20, 0.06)',
-        transition: 'all 0.25s ease-in-out',
+    <article
+      style={{
+        position: 'relative',
+        width: '100%',
+        maxWidth: '308px',
+        height: '520px',
+        borderRadius: '11px',
+        border: '1px solid #EFC7A2',
+        backgroundColor: '#251A16',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease-in-out',
         display: 'flex',
         flexDirection: 'column',
-        height: '100%'
+        padding: '24px'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-4px)'
-        e.currentTarget.style.boxShadow = '0 14px 34px rgba(59, 35, 20, 0.12)'
+        e.currentTarget.style.backgroundColor = '#654D3C'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)'
-        e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 35, 20, 0.06)'
+        e.currentTarget.style.backgroundColor = '#251A16'
       }}
     >
-      <Link to={/product/} style={{ display: 'block', overflow: 'hidden' }}>
-        <img 
-          src={product.image} 
-          alt={product.name} 
-          style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} 
-        />
-      </Link>
-      <div style={{ padding: '16px 18px 18px', display: 'flex', flexDirection: 'column', flex: 1, gap: '10px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#3b2314', lineHeight: '1.7' }}>{product.name}</h3>
-          <p style={{ color: '#d97706', fontWeight: '800', fontSize: '1.16rem' }}>{product.price} ج.م</p>
-        </div>
-        <button 
-          onClick={() => addToCart(product)}
-          disabled={!product.inStock}
-          style={{ 
-            marginTop: 'auto',
-            width: '100%', 
-            padding: '12px', 
-            backgroundColor: product.inStock ? '#d97706' : '#ccc', 
-            color: '#fff', 
-            border: 'none', 
-            borderRadius: '12px', 
-            fontWeight: '800', 
-            fontSize: '0.98rem', 
-            cursor: product.inStock ? 'pointer' : 'not-allowed',
-            transition: 'filter 0.2s ease'
-          }}
-          onMouseEnter={(e) => { if(product.inStock) e.currentTarget.style.filter = 'brightness(0.95)' }}
-          onMouseLeave={(e) => { if(product.inStock) e.currentTarget.style.filter = 'brightness(1)' }}
-        >
-          {product.inStock ? 'أضف للسلة' : 'غير متوفر'}
-        </button>
+      <div style={{ height: '320px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', position: 'relative' }}>
+        <Link to={/product/} style={{ display: 'block', width: '220px', height: '300px', position: 'relative', transition: 'transform 0.3s ease-in-out' }} 
+          onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-64px)' }}
+          onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)' }}>
+          <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+        </Link>
       </div>
-    </div>
+      
+      <div style={{ borderTop: '1px solid #EFC7A2', borderBottom: '1px solid #EFC7A2', paddingBlock: '16px', textAlign: 'center', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Link to={/product/}>
+          <h3 style={{ color: '#fff', fontWeight: '700', fontSize: '1.25rem', lineHeight: '1.6', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+            {product.name}
+          </h3>
+        </Link>
+      </div>
+      
+      <button
+        onClick={(e) => {
+          e.preventDefault()
+          addToCart(product)
+        }}
+        disabled={!product.inStock}
+        style={{
+          marginTop: '16px',
+          width: '100%',
+          padding: '12px',
+          borderRadius: '8px',
+          background: product.inStock ? 'linear-gradient(91deg, #232629 0.92%, #4D311A 53.14%, #232629 93.96%)' : '#666',
+          color: '#fff',
+          fontWeight: '600',
+          fontSize: '0.95rem',
+          border: '1px solid #EFC7A2',
+          transition: 'all 0.2s ease-in-out'
+        }}
+      >
+        {product.inStock ? 'أضف للسلة' : 'غير متوفر'}
+      </button>
+    </article>
   )
 }

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import SiteHeader from './components/layout/SiteHeader'
+import Header from './components/layout/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Products from './pages/Products'
@@ -18,7 +18,7 @@ import Orders from './pages/admin/Orders'
 export default function App() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <SiteHeader />
+      <Header />
       <main style={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />

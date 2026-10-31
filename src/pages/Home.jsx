@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useProducts } from '../context/ProductContext'
-import IntroHero from '../components/home/IntroHero'
-import ProductTile from '../components/product/ProductTile'
+import Hero from '../components/home/Hero'
+import ProductCard from '../components/product/ProductCard'
 
 export default function Home() {
   const { products } = useProducts()
@@ -9,26 +9,17 @@ export default function Home() {
 
   return (
     <div>
-      <IntroHero />
+      <Hero />
 
-      <section className="section-tight">
+      <section className="section-sm">
         <div className="container">
-          <div className="section-header">
-            <div className="section-header-group">
-              <div className="section-eyebrow">
-                <span></span>
-                التشكيلة
-              </div>
-              <h2 className="section-title">مختاراتنا</h2>
-              <p className="section-subtitle">كل خلطة تُحمص على حدة للحفاظ على نكهتها الفريدة</p>
-            </div>
-            <Link to="/products" className="link-text">عرض كل المنتجات</Link>
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: '800', letterSpacing: '-0.02em' }}>التشكيلة</h2>
+            <Link to="/products" className="btn btn-link">كل المنتجات</Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 'clamp(24px, 6vw, 40px)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'clamp(20px, 4vw, 36px)' }}>
             {featured.map((product) => (
-              <div key={product.id} className="home-tile" style={{ gridColumn: 'span 3' }}>
-                <ProductTile product={product} />
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>

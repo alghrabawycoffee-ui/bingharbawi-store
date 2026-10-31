@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/layout/Header'
-import Footer from './components/Footer'
 import BottomNav from './components/layout/BottomNav'
 import Home from './pages/Home'
 import Products from './pages/Products'
@@ -26,7 +25,7 @@ function App() {
         <CartProvider>
           <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
             <Header />
-            <main style={{ flex: 1, paddingBottom: '70px' }}>
+            <main style={{ flex: 1 }}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
@@ -44,7 +43,6 @@ function App() {
                 </Route>
               </Routes>
             </main>
-            <Footer />
             <BottomNav />
           </div>
         </CartProvider>

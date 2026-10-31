@@ -1,87 +1,65 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
+import { FiPlus } from 'react-icons/fi'
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart()
 
   return (
-    <article
+    <div
       style={{
-        backgroundColor: '#2a1a12',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        borderRadius: '12px',
+        backgroundColor: '#ffffff',
+        borderRadius: '14px',
         overflow: 'hidden',
-        transition: 'all 0.3s ease-in-out',
-        position: 'relative'
+        boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+        border: '1px solid #f1f1f1',
+        transition: 'all 0.2s ease-in-out',
+        display: 'flex',
+        flexDirection: 'column'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = '#4a2e1b'
-        e.currentTarget.style.transform = 'translateY(-8px)'
-        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)'
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.06)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = '#2a1a12'
-        e.currentTarget.style.transform = 'translateY(0)'
-        e.currentTarget.style.boxShadow = 'none'
+        e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)'
       }}
     >
-      <div style={{ width: '100%', height: '250px', overflow: 'hidden', position: 'relative' }}>
-        <Link to={/product/} style={{ display: 'block', width: '100%', height: '100%' }}>
+      <Link to={/product/} style={{ display: 'block', position: 'relative' }}>
+        <div style={{ width: '100%', height: '160px', overflow: 'hidden' }}>
           <img
             src={product.image}
             alt={product.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease-in-out' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'
-            }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
-        </Link>
-        <button
-          onClick={(e) => {
-            e.preventDefault()
-            addToCart(product)
-          }}
-          disabled={!product.inStock}
-          style={{
-            position: 'absolute',
-            bottom: '12px',
-            left: '12px',
-            width: '36px',
-            height: '36px',
-            borderRadius: '50%',
-            backgroundColor: '#d4af37',
-            color: '#1a100a',
-            border: 'none',
-            fontSize: '1.4rem',
-            fontWeight: '700',
-            cursor: product.inStock ? 'pointer' : 'not-allowed',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-          }}
-        >
-          +
-        </button>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', padding: '24px 20px 28px', flex: 1 }}>
-        <div style={{ width: '80%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', flex: 1 }}>
-          <Link to={/product/}>
-            <h3 style={{ fontSize: '1.08rem', fontWeight: '800', color: '#ffffff', lineHeight: '1.8', textAlign: 'center', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
-              {product.name}
-            </h3>
-          </Link>
-          <p style={{ color: '#d4af37', fontWeight: '800', fontSize: '1.18rem', textAlign: 'center' }}>{product.price} ج.م</p>
         </div>
-        <div style={{ width: '80%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
+      </Link>
+      <div style={{ padding: '12px 14px 14px', display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+        <Link to={/product/}>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#1f1f1f', lineHeight: '1.6', minHeight: '48px' }}>
+            {product.name}
+          </h3>
+        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
+          <span style={{ fontWeight: '800', color: '#1f1f1f', fontSize: '1rem' }}>{product.price} ج.م</span>
+          <button
+            onClick={() => addToCart(product)}
+            disabled={!product.inStock}
+            style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              backgroundColor: product.inStock ? '#22c55e' : '#d1d5db',
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: product.inStock ? 'pointer' : 'not-allowed'
+            }}
+          >
+            <FiPlus size={18} />
+          </button>
+        </div>
       </div>
-    </article>
+    </div>
   )
 }

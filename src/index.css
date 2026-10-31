@@ -1,19 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap');
-
-:root {
-  --color-dark: #1a100a;
-  --color-primary: #3b2314;
-  --color-gold: #d4af37;
-  --color-cream: #fdfbf7;
-  --color-white: #ffffff;
-  --color-light-gray: #cccccc;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,10 +14,10 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-primary);
-  line-height: 1.8;
-  font-size: 16px;
+  background-color: #f8f9fa;
+  color: #1f1f1f;
+  line-height: 1.7;
+  font-size: 15px;
   direction: rtl;
 }
 
@@ -48,12 +39,6 @@ button {
 }
 
 .container {
-  width: min(1280px, 100% - 40px);
+  width: min(1100px, 100% - 24px);
   margin-inline: auto;
-}
-
-@media (max-width: 680px) {
-  .container {
-    width: min(1280px, 100% - 24px);
-  }
 }

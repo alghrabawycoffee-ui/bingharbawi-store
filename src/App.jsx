@@ -16,7 +16,7 @@ export default function App() {
         </Routes>
       </main>
       <footer style={{ textAlign: 'center', padding: '20px', backgroundColor: '#3b2314', color: '#fff', marginTop: 'auto' }}>
-        جميع الحقوق محفوظة © بن الغرباوي 2024
+        جميع الحقوق محفوظة © بن الغرباوي 2027
       </footer>
     </div>
   )

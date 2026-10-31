@@ -1,22 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Tajawal:wght@400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap');
 
 :root {
-  --color-dark: #251A16;
-  --color-darker: #160F0D;
-  --color-brown: #654D3C;
-  --color-gold: #EFC7A2;
-  --color-cream: #F4F0EF;
-  --color-bg: #F4F0EF;
-  --color-surface: #ffffff;
-  --color-text-primary: #251A16;
-  --color-text-secondary: #654D3C;
+  --color-dark: #1a100a;
+  --color-primary: #3b2314;
+  --color-gold: #d4af37;
+  --color-cream: #fdfbf7;
+  --color-white: #ffffff;
+  --color-light-gray: #cccccc;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,7 +24,7 @@ html {
 
 body {
   background-color: var(--color-cream);
-  color: var(--color-text-primary);
+  color: var(--color-primary);
   line-height: 1.8;
   font-size: 16px;
   direction: rtl;

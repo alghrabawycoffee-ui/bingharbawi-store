@@ -18,7 +18,7 @@ export default function Navbar() {
             <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '-0.01em', color: 'var(--color-primary)' }}>بن الغرباوي</span>
           </Link>
 
-          <nav style={{ display: 'flex', gap: '36px', alignItems: 'center' }} className="nav-desktop">
+          <nav className="nav-desktop" style={{ display: 'flex', gap: '36px', alignItems: 'center' }}>
             <Link to="/" style={{ fontWeight: '600', fontSize: '0.98rem' }}>الرئيسية</Link>
             <Link to="/products" style={{ fontWeight: '600', fontSize: '0.98rem' }}>المتجر</Link>
             {user && <Link to="/my-orders" style={{ fontWeight: '600', fontSize: '0.98rem' }}>طلباتي</Link>}
@@ -45,12 +45,6 @@ export default function Navbar() {
       </header>
 
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
-
-      <style>{
-        @media (max-width: 860px) {
-          .nav-desktop { display: none !important; }
-        }
-      }</style>
     </>
   )
 }

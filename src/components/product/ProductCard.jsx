@@ -8,24 +8,17 @@ export default function ProductCard({ product }) {
   return (
     <div
       style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '14px',
+        backgroundColor: '#FFFFFF',
+        borderRadius: '16px',
         overflow: 'hidden',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-        border: '1px solid #f1f1f1',
-        transition: 'all 0.2s ease-in-out',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
         display: 'flex',
-        flexDirection: 'column'
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.06)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)'
+        flexDirection: 'column',
+        position: 'relative'
       }}
     >
-      <Link to={/product/} style={{ display: 'block', position: 'relative' }}>
-        <div style={{ width: '100%', height: '160px', overflow: 'hidden' }}>
+      <Link to={/product/} style={{ display: 'block' }}>
+        <div style={{ width: '100%', height: '170px', overflow: 'hidden', backgroundColor: '#f9f9f9' }}>
           <img
             src={product.image}
             alt={product.name}
@@ -33,33 +26,34 @@ export default function ProductCard({ product }) {
           />
         </div>
       </Link>
-      <div style={{ padding: '12px 14px 14px', display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+      <div style={{ padding: '12px 14px 16px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
         <Link to={/product/}>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#1f1f1f', lineHeight: '1.6', minHeight: '48px' }}>
+          <h3 style={{ fontSize: '0.92rem', fontWeight: '700', color: '#1A1A1A', lineHeight: '1.7', minHeight: '46px' }}>
             {product.name}
           </h3>
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
-          <span style={{ fontWeight: '800', color: '#1f1f1f', fontSize: '1rem' }}>{product.price} ج.م</span>
-          <button
-            onClick={() => addToCart(product)}
-            disabled={!product.inStock}
-            style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '50%',
-              backgroundColor: product.inStock ? '#22c55e' : '#d1d5db',
-              color: '#ffffff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: product.inStock ? 'pointer' : 'not-allowed'
-            }}
-          >
-            <FiPlus size={18} />
-          </button>
-        </div>
+        <span style={{ fontWeight: '800', color: '#D97706', fontSize: '1rem' }}>{product.price} ج.م</span>
       </div>
+      <button
+        onClick={() => addToCart(product)}
+        disabled={!product.inStock}
+        style={{
+          position: 'absolute',
+          bottom: '12px',
+          left: '12px',
+          width: '34px',
+          height: '34px',
+          borderRadius: '50%',
+          backgroundColor: product.inStock ? '#D97706' : '#d1d5db',
+          color: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: product.inStock ? 'pointer' : 'not-allowed'
+        }}
+      >
+        <FiPlus size={18} />
+      </button>
     </div>
   )
 }

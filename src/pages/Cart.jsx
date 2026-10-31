@@ -1,84 +1,61 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import { FiChevronRight, FiMinus, FiPlus } from 'react-icons/fi'
 
 export default function Cart() {
-  const { cart, increaseQuantity, decreaseQuantity, removeFromCart, getCartTotal } = useCart()
-  const shipping = 0
-  const total = getCartTotal() + shipping
+  const { cart, increaseQuantity, decreaseQuantity, getCartTotal } = useCart()
+  const total = getCartTotal()
 
   if (cart.length === 0) {
     return (
-      <div style={{ padding: '160px 20px 100px', textAlign: 'center', backgroundColor: '#1a100a', minHeight: '100vh' }}>
-        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '16px', color: '#d4af37', fontWeight: '800', fontFamily: 'Cairo, Tajawal, sans-serif' }}>سلة المشتريات</h2>
-        <p style={{ color: '#cccccc', marginBottom: '40px' }}>سلتك فارغة حالياً</p>
-        <Link to="/products" style={{ display: 'inline-block', padding: '12px 40px', border: '2px solid #d4af37', color: '#d4af37', fontWeight: '700', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
-          تصفح المنتجات
-        </Link>
+      <div style={{ padding: '40px 20px', textAlign: 'center', backgroundColor: '#FFFFFF' }}>
+        <h2 style={{ fontWeight: '800', marginBottom: '12px' }}>السلة فارغة</h2>
+        <Link to="/" style={{ color: '#D97706', fontWeight: '700' }}>تسوق الآن</Link>
       </div>
     )
   }
 
   return (
-    <div style={{ backgroundColor: '#1a100a', minHeight: '100vh' }}>
-      <div className="container" style={{ padding: '160px 20px 220px' }}>
-        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '50px', color: '#d4af37', fontWeight: '800', fontFamily: 'Cairo, Tajawal, sans-serif' }}>سلة المشتريات</h2>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'start' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {cart.map((item) => (
-              <div key={item.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', backgroundColor: '#2a1a12', borderRadius: '12px', padding: '20px', flexWrap: 'wrap' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flex: '1', minWidth: '250px' }}>
-                  <img src={item.image} alt={item.name} style={{ width: '90px', height: '90px', objectFit: 'cover', borderRadius: '8px' }} />
-                  <div>
-                    <h4 style={{ fontWeight: '700', color: '#ffffff', marginBottom: '8px', fontFamily: 'Cairo, Tajawal, sans-serif' }}>{item.name}</h4>
-                    <span style={{ color: '#d4af37', fontWeight: '800' }}>{item.price} ج.م</span>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', border: '1px solid rgba(255, 255, 255, 0.4)', borderRadius: '4px', padding: '8px 16px' }}>
-                    <button onClick={() => decreaseQuantity(item.id)} style={{ fontSize: '1.2rem', color: '#ffffff', background: 'none', border: 'none', cursor: 'pointer' }}>-</button>
-                    <span style={{ fontWeight: '700', minWidth: '20px', textAlign: 'center', color: '#ffffff' }}>{item.quantity}</span>
-                    <button onClick={() => increaseQuantity(item.id)} style={{ fontSize: '1.2rem', color: '#ffffff', background: 'none', border: 'none', cursor: 'pointer' }}>+</button>
-                  </div>
-                  <button onClick={() => removeFromCart(item.id)} style={{ color: '#cccccc', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer' }}>إزالة</button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <aside>
-            <div style={{ backgroundColor: '#2a1a12', borderRadius: '12px', padding: '30px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>ملخص الطلب</h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#cccccc' }}>
-                  <span>المجموع الفرعي</span>
-                  <span>{getCartTotal()} ج.م</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#cccccc' }}>
-                  <span>الشحن</span>
-                  <span>{shipping === 0 ? 'مجاني' : shipping + ' ج.م'}</span>
-                </div>
-                <div style={{ height: '1px', backgroundColor: 'rgba(212, 175, 55, 0.4)' }}></div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ fontWeight: '800', fontSize: '1.1rem', color: '#ffffff' }}>الإجمالي</span>
-                  <span style={{ fontWeight: '800', fontSize: '1.6rem', color: '#d4af37' }}>{total} ج.م</span>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
+    <div style={{ backgroundColor: '#FFFFFF', paddingBottom: '110px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px' }}>
+        <Link to="/" style={{ color: '#1A1A1A' }}>
+          <FiChevronRight size={24} />
+        </Link>
+        <span style={{ fontWeight: '700' }}>سلة التسوق</span>
+        <div style={{ width: '24px' }}></div>
       </div>
 
-      <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(26, 16, 10, 0.98)', borderTop: '1px solid rgba(212, 175, 55, 0.3)', zIndex: 90 }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', paddingBlock: '16px', flexWrap: 'wrap' }}>
-          <div>
-            <span style={{ color: '#cccccc', display: 'block' }}>الإجمالي</span>
-            <span style={{ fontSize: '1.6rem', fontWeight: '800', color: '#d4af37' }}>{total} ج.م</span>
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        {cart.map((item) => (
+          <div key={item.id} style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '12px', border: '1px solid #f1f1f1', borderRadius: '12px' }}>
+            <img src={item.image} alt={item.name} style={{ width: '72px', height: '72px', borderRadius: '10px', objectFit: 'cover' }} />
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <h4 style={{ fontWeight: '700', fontSize: '0.92rem' }}>{item.name}</h4>
+                <span style={{ fontWeight: '800', color: '#D97706' }}>{item.price} ج.م</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <button onClick={() => decreaseQuantity(item.id)} style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FiMinus size={16} />
+                </button>
+                <span style={{ fontWeight: '700', minWidth: '20px', textAlign: 'center' }}>{item.quantity}</span>
+                <button onClick={() => increaseQuantity(item.id)} style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FiPlus size={16} />
+                </button>
+              </div>
+            </div>
           </div>
-          <Link to="/checkout" style={{ padding: '14px 48px', border: '2px solid #d4af37', color: '#d4af37', fontWeight: '700', fontFamily: 'Cairo, Tajawal, sans-serif', textAlign: 'center' }}>
-            إتمام الطلب
-          </Link>
+        ))}
+      </div>
+
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#FFFFFF', borderTop: '1px solid #f1f1f1', padding: '12px 16px', zIndex: 100 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+          <span style={{ fontWeight: '700' }}>الإجمالي</span>
+          <span style={{ fontWeight: '800', fontSize: '1.1rem', color: '#D97706' }}>{total} ج.م</span>
         </div>
+        <Link to="/checkout" style={{ display: 'block', width: '100%', padding: '14px', backgroundColor: '#1A1A1A', color: '#FFFFFF', borderRadius: '12px', textAlign: 'center', fontWeight: '700' }}>
+          إتمام الطلب
+        </Link>
       </div>
     </div>
   )

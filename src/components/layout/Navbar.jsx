@@ -11,38 +11,46 @@ export default function Navbar() {
 
   return (
     <>
-      <header style={{ backgroundColor: '#fff', borderBottom: '1px solid #e8e1dc', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', gap: '20px' }}>
-          <Link to="/" style={{ fontSize: '1.6rem', fontWeight: '800', color: '#3b2314' }}>
-            ☕ بن الغرباوي
+      <header style={{ backgroundColor: 'rgba(248, 246, 243, 0.98)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--color-border-light)', position: 'sticky', top: 0, zIndex: 100 }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 24px', gap: '24px' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '1.8rem' }}>☕</span>
+            <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '-0.01em', color: 'var(--color-primary)' }}>بن الغرباوي</span>
           </Link>
 
-          <nav className="nav-links" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-            <Link to="/" style={{ fontWeight: '600' }}>الرئيسية</Link>
-            <Link to="/products" style={{ fontWeight: '600' }}>المنتجات</Link>
-            {user && <Link to="/my-orders" style={{ fontWeight: '600' }}>طلباتي</Link>}
-            {isAdmin && <Link to="/admin" style={{ fontWeight: '600', color: '#8b5a2b' }}>لوحة الإدارة</Link>}
+          <nav style={{ display: 'flex', gap: '36px', alignItems: 'center' }} className="nav-desktop">
+            <Link to="/" style={{ fontWeight: '600', fontSize: '0.98rem' }}>الرئيسية</Link>
+            <Link to="/products" style={{ fontWeight: '600', fontSize: '0.98rem' }}>المتجر</Link>
+            {user && <Link to="/my-orders" style={{ fontWeight: '600', fontSize: '0.98rem' }}>طلباتي</Link>}
+            {isAdmin && <Link to="/admin" style={{ fontWeight: '600', fontSize: '0.98rem', color: 'var(--color-accent)' }}>لوحة التحكم</Link>}
           </nav>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-            <button onClick={() => setCartOpen(true)} style={{ background: 'none', border: 'none', fontSize: '1.25rem', cursor: 'pointer', position: 'relative', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              🛒
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <button onClick={() => setCartOpen(true)} style={{ background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 14px', borderRadius: '999px', border: '1px solid var(--color-border)' }}>
+              <span style={{ fontSize: '1.1rem' }}>🛍️</span>
+              <span style={{ fontWeight: '600', fontSize: '0.98rem' }}>السلة</span>
               {getCartCount() > 0 && (
-                <span style={{ backgroundColor: '#8b5a2b', color: '#fff', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: '700' }}>
+                <span style={{ backgroundColor: 'var(--color-primary)', color: '#fff', borderRadius: '999px', padding: '2px 10px', fontSize: '0.85rem', fontWeight: '700' }}>
                   {getCartCount()}
                 </span>
               )}
             </button>
             {user ? (
-              <button onClick={logout} style={{ padding: '8px 18px', backgroundColor: '#f5f3f0', border: 'none', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}>خروج</button>
+              <button onClick={logout} className="btn btn-ghost" style={{ padding: '9px 20px', fontSize: '0.98rem' }}>تسجيل الخروج</button>
             ) : (
-              <Link to="/login" style={{ padding: '8px 18px', backgroundColor: '#3b2314', color: '#fff', borderRadius: '6px', fontWeight: '600' }}>دخول</Link>
+              <Link to="/login" className="btn btn-primary" style={{ padding: '9px 24px', fontSize: '0.98rem' }}>تسجيل الدخول</Link>
             )}
           </div>
         </div>
       </header>
 
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+
+      <style>{
+        @media (max-width: 860px) {
+          .nav-desktop { display: none !important; }
+        }
+      }</style>
     </>
   )
 }

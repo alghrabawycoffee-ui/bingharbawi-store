@@ -11,13 +11,16 @@ export default function Home() {
     <div>
       <Hero />
       
-      <section style={{ padding: '60px 0' }}>
+      <section className="section">
         <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: '800', color: '#3b2314' }}>أبرز المنتجات</h2>
-            <Link to="/products" style={{ color: '#8b5a2b', fontWeight: '600' }}>عرض الكل ←</Link>
+          <div className="section-header">
+            <div className="section-title-group">
+              <h2>مختاراتنا</h2>
+              <p>أكثر ما يميز متجر بن الغرباوي من أجود الخلطات</p>
+            </div>
+            <Link to="/products" className="btn btn-ghost">عرض كل المنتجات</Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '28px' }}>
             {featured.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

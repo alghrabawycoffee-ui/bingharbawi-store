@@ -9,11 +9,11 @@ export default function CartDrawer({ isOpen, onClose }) {
 
   return (
     <>
-      <div onClick={onClose} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000 }} />
-      <div style={{ position: 'fixed', top: 0, left: 0, height: '100vh', width: '100%', maxWidth: '420px', backgroundColor: '#FFFFFF', zIndex: 1001, display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '16px', borderBottom: '1px solid #f1f1f1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: '800', color: '#2E2E2E' }}>محتويات السلة</h2>
-          <button onClick={onClose} style={{ color: '#2E2E2E' }}>
+      <div onClick={onClose} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 1000 }} />
+      <div style={{ position: 'fixed', top: 0, left: 0, height: '100vh', width: '100%', maxWidth: '400px', backgroundColor: '#FFFFFF', zIndex: 1001, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ padding: '14px 16px', borderBottom: '1px solid #f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <h2 style={{ fontSize: '1rem', fontWeight: '800', color: '#1A1A1A' }}>سلة المشتريات</h2>
+          <button onClick={onClose} style={{ color: '#1A1A1A' }}>
             <FiX size={24} />
           </button>
         </div>
@@ -21,29 +21,29 @@ export default function CartDrawer({ isOpen, onClose }) {
         <div style={{ flex: 1, overflowY: 'auto', padding: '16px' }}>
           {cart.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px 20px', color: '#6b6b6b' }}>
-              <p>السلة فارغة</p>
+              <p>سلة المشتريات فارغة</p>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {cart.map((item) => (
-                <div key={item.id} style={{ display: 'flex', gap: '12px', paddingBottom: '16px', borderBottom: '1px solid #f1f1f1' }}>
-                  <img src={item.image} alt={item.name} style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover' }} />
-                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div key={item.id} style={{ display: 'flex', gap: '12px', paddingBottom: '14px', borderBottom: '1px solid #f5f5f5' }}>
+                  <img src={item.image} alt={item.name} style={{ width: '70px', height: '70px', borderRadius: '8px', objectFit: 'cover' }} />
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <h4 style={{ fontWeight: '700', fontSize: '0.92rem', flex: 1 }}>{item.name}</h4>
-                      <button onClick={() => removeFromCart(item.id)} style={{ color: '#D9534F' }}>
-                        <FiTrash2 size={18} />
+                      <h4 style={{ fontWeight: '700', fontSize: '0.9rem', flex: 1 }}>{item.name}</h4>
+                      <button onClick={() => removeFromCart(item.id)} style={{ color: '#999' }}>
+                        <FiTrash2 size={16} />
                       </button>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontWeight: '800', color: '#F5B000' }}>{item.price} ج.م</span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', border: '1px solid #f1f1f1', borderRadius: '8px', padding: '6px 12px' }}>
-                        <button onClick={() => decreaseQuantity(item.id)} style={{ color: '#2E2E2E' }}>
-                          <FiMinus size={16} />
+                      <span style={{ fontWeight: '800', color: '#1A1A1A' }}>{item.price} ر.س</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e5e5e5', borderRadius: '6px', padding: '4px 10px' }}>
+                        <button onClick={() => decreaseQuantity(item.id)} style={{ color: '#1A1A1A' }}>
+                          <FiMinus size={14} />
                         </button>
-                        <span style={{ fontWeight: '700', minWidth: '20px', textAlign: 'center' }}>{item.quantity}</span>
-                        <button onClick={() => increaseQuantity(item.id)} style={{ color: '#2E2E2E' }}>
-                          <FiPlus size={16} />
+                        <span style={{ fontWeight: '700', minWidth: '16px', textAlign: 'center', fontSize: '0.9rem' }}>{item.quantity}</span>
+                        <button onClick={() => increaseQuantity(item.id)} style={{ color: '#1A1A1A' }}>
+                          <FiPlus size={14} />
                         </button>
                       </div>
                     </div>
@@ -55,24 +55,13 @@ export default function CartDrawer({ isOpen, onClose }) {
         </div>
 
         {cart.length > 0 && (
-          <div style={{ padding: '16px', borderTop: '1px solid #f1f1f1' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '14px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>المجموع الفرعي</span>
-                <span style={{ fontWeight: '700' }}>{total} ج.م</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>الخصم</span>
-                <span style={{ color: '#D9534F', fontWeight: '700' }}>0 ج.م</span>
-              </div>
-              <div style={{ height: '1px', backgroundColor: '#f1f1f1' }}></div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ fontWeight: '800' }}>الإجمالي</span>
-                <span style={{ fontWeight: '800', fontSize: '1.2rem', color: '#F5B000' }}>{total} ج.م</span>
-              </div>
+          <div style={{ padding: '16px', borderTop: '1px solid #f5f5f5' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <span style={{ fontWeight: '700' }}>المجموع</span>
+              <span style={{ fontWeight: '800', fontSize: '1.1rem' }}>{total} ر.س</span>
             </div>
-            <button onClick={onClose} style={{ width: '100%', padding: '14px', backgroundColor: '#FFC107', borderRadius: '12px', fontWeight: '800', fontSize: '1rem' }}>
-              متابعة الطلب
+            <button onClick={onClose} style={{ width: '100%', padding: '13px', backgroundColor: '#1A1A1A', color: '#FFFFFF', borderRadius: '8px', fontWeight: '800' }}>
+              إتمام الطلب
             </button>
           </div>
         )}

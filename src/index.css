@@ -15,7 +15,7 @@ html {
 
 body {
   background-color: #FFFFFF;
-  color: #2E2E2E;
+  color: #1A1A1A;
   line-height: 1.7;
   font-size: 15px;
   direction: rtl;
@@ -39,6 +39,6 @@ button {
 }
 
 .container {
-  width: min(1200px, 100% - 24px);
+  width: min(1200px, 100% - 16px);
   margin-inline: auto;
 }

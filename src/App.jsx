@@ -1,34 +1,23 @@
-import { Routes, Route, Link } from 'react-router-dom'
-
-function Home() {
-  return (
-    <div style={{ padding: 24, textAlign: 'center' }}>
-      <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>☕ بن الغرباوي</h1>
-      <p style={{ fontSize: '1.2rem', color: '#555' }}>المتجر شغال ✅</p>
-      <Link to="/products" style={{ display: 'inline-block', marginTop: '20px', padding: '10px 20px', backgroundColor: '#8b5a2b', color: '#fff', borderRadius: '8px' }}>
-        تصفح المنتجات
-      </Link>
-    </div>
-  )
-}
-
-function Products() {
-  return (
-    <div style={{ padding: 24, textAlign: 'center' }}>
-      <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>المنتجات</h2>
-      <p style={{ color: '#666' }}>قريبًا...</p>
-      <Link to="/" style={{ display: 'inline-block', marginTop: '20px', padding: '10px 20px', backgroundColor: '#333', color: '#fff', borderRadius: '8px' }}>
-        رجوع للرئيسية
-      </Link>
-    </div>
-  )
-}
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Products from './pages/Products'
+import Cart from './pages/Cart'
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Products />} />
-    </Routes>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Navbar />
+      <main style={{ flex: 1 }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </main>
+      <footer style={{ textAlign: 'center', padding: '20px', backgroundColor: '#3b2314', color: '#fff', marginTop: 'auto' }}>
+        جميع الحقوق محفوظة © بن الغرباوي 2024
+      </footer>
+    </div>
   )
 }

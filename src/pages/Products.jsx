@@ -38,8 +38,8 @@ export default function Products() {
       </section>
 
       <section className="section" style={{ paddingTop: 'clamp(var(--space-8), 8vw, var(--space-10))' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 'clamp(var(--space-7), 6vw, var(--space-9))', alignItems: 'start' }} className="products-grid">
-          <aside style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-7)', position: 'sticky', top: '96px' }} className="products-sidebar">
+        <div className="products-grid" style={{ width: 'min(1240px, 100% - 48px)', margin: '0 auto', display: 'grid', gridTemplateColumns: '280px 1fr', gap: 'clamp(var(--space-7), 6vw, var(--space-9))', alignItems: 'start' }}>
+          <aside className="products-sidebar" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-7)', position: 'sticky', top: '96px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
               <span style={{ fontWeight: '800' }}>البحث</span>
               <input
@@ -90,7 +90,7 @@ export default function Products() {
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 'var(--space-6)' }}>
                 {filteredProducts.map((product) => (
-                  <div key={product.id} style={{ gridColumn: 'span 4' }} className="products-item">
+                  <div key={product.id} className="products-item" style={{ gridColumn: 'span 4' }}>
                     <ProductCard product={product} />
                   </div>
                 ))}
@@ -99,19 +99,6 @@ export default function Products() {
           </div>
         </div>
       </section>
-
-      <style>{
-        @media (max-width: 1080px) {
-          .products-grid { grid-template-columns: 1fr; }
-          .products-sidebar { position: static; flex-direction: row; flex-wrap: wrap; gap: var(--space-6); }
-        }
-        @media (max-width: 980px) {
-          .products-item { grid-column: span 6; }
-        }
-        @media (max-width: 680px) {
-          .products-item { grid-column: span 12; }
-        }
-      }</style>
     </div>
   )
 }

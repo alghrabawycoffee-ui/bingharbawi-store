@@ -1,10 +1,8 @@
 export default function AdminOrders() {
   return (
     <div>
-      <h1 style={{ fontSize: '1.5rem', fontWeight: '800', marginBottom: '24px' }}>الطلبات</h1>
-      <div style={{ backgroundColor: '#FFFFFF', padding: '40px', borderRadius: '12px', textAlign: 'center', color: '#6b6b6b' }}>
-        <p>لا توجد طلبات حالياً</p>
-      </div>
+      <h1 style={{ fontWeight: 900, fontSize: 22, marginBottom: 20 }}>الطلبات</h1>
+      <div style={{ background: '#fff', padding: 40, textAlign: 'center', color: '#999', borderRadius: 10 }}>يتم عرض الطلبات عند استلامها عبر الواتساب</div>
     </div>
   )
 }

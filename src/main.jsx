@@ -9,7 +9,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='/bingharbawi-store'>
+    <BrowserRouter basename='/'>
       <AuthProvider>
         <ProductProvider>
           <CartProvider>

@@ -36,8 +36,8 @@ export default function Products() {
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>اكتشف مجموعتنا من أجود أنواع البن</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '40px', alignItems: 'start' }} className="products-layout">
-          <aside style={{ backgroundColor: 'var(--white)', padding: '24px', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)', position: 'sticky', top: '100px' }} className="filters-sidebar">
+        <div className="products-layout" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '40px', alignItems: 'start' }}>
+          <aside className="filters-sidebar" style={{ backgroundColor: 'var(--white)', padding: '24px', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)', position: 'sticky', top: '100px' }}>
             <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '20px', color: 'var(--primary)' }}>الفلاتر</h3>
             
             <div style={{ marginBottom: '24px' }}>
@@ -109,13 +109,6 @@ export default function Products() {
           </div>
         </div>
       </div>
-
-      <style>{
-        @media (max-width: 968px) {
-          .products-layout { grid-template-columns: 1fr !important; }
-          .filters-sidebar { position: static !important; }
-        }
-      }</style>
     </div>
   )
 }

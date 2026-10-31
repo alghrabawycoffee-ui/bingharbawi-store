@@ -7,65 +7,68 @@ export default function ProductCard({ product }) {
   return (
     <article
       style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#2a1a12',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        borderRadius: '8px',
+        borderRadius: '12px',
         overflow: 'hidden',
-        boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
         transition: 'all 0.3s ease-in-out'
       }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = '#4a2e1b'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = '#2a1a12'
+      }}
     >
-      <div style={{ width: '100%', height: '250px', overflow: 'hidden', backgroundColor: '#f8f6f3' }}>
+      <div style={{ width: '100%', height: '250px', overflow: 'hidden' }}>
         <Link to={/product/} style={{ display: 'block', width: '100%', height: '100%' }}>
           <img
             src={product.image}
             alt={product.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease-in-out' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'
-            }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
         </Link>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '22px 20px 26px', flex: 1 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', padding: '24px 20px 28px', flex: 1 }}>
+        <div style={{ width: '80%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', flex: 1 }}>
           <Link to={/product/}>
-            <h3 style={{ fontSize: '1.08rem', fontWeight: '800', color: '#3b2314', lineHeight: '1.8', textAlign: 'center', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
+            <h3 style={{ fontSize: '1.08rem', fontWeight: '800', color: '#ffffff', lineHeight: '1.8', textAlign: 'center', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
               {product.name}
             </h3>
           </Link>
-          <p style={{ color: '#d4af37', fontWeight: '800', fontSize: '1.2rem', textAlign: 'center' }}>{product.price} ج.م</p>
+          <p style={{ color: '#d4af37', fontWeight: '800', fontSize: '1.18rem', textAlign: 'center' }}>{product.price} ج.م</p>
         </div>
+        <div style={{ width: '80%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
 
         <button
           onClick={() => addToCart(product)}
           disabled={!product.inStock}
           style={{
-            marginTop: 'auto',
-            width: '100%',
-            padding: '13px',
-            backgroundColor: product.inStock ? '#3b2314' : '#999',
+            marginTop: '8px',
+            padding: '10px 32px',
+            backgroundColor: 'transparent',
             color: '#ffffff',
             fontWeight: '700',
-            fontSize: '0.96rem',
+            fontSize: '0.95rem',
             transition: 'all 0.3s ease-in-out',
             fontFamily: 'Cairo, Tajawal, sans-serif',
+            border: '1px solid rgba(255, 255, 255, 0.7)',
             borderRadius: '4px'
           }}
           onMouseEnter={(e) => {
             if (product.inStock) {
-              e.currentTarget.style.backgroundColor = '#d4af37'
+              e.currentTarget.style.borderColor = '#d4af37'
+              e.currentTarget.style.color = '#d4af37'
             }
           }}
           onMouseLeave={(e) => {
             if (product.inStock) {
-              e.currentTarget.style.backgroundColor = '#3b2314'
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.7)'
+              e.currentTarget.style.color = '#ffffff'
             }
           }}
         >

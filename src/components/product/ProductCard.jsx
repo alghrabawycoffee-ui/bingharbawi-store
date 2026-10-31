@@ -11,8 +11,9 @@ export default function ProductCard({ product }) {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        boxShadow: '0 10px 20px rgba(0,0,0,0.05)',
+        borderRadius: '8px',
         overflow: 'hidden',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
         transition: 'all 0.3s ease-in-out'
       }}
     >
@@ -32,14 +33,14 @@ export default function ProductCard({ product }) {
         </Link>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '20px 18px 24px', flex: 1 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '22px 20px 26px', flex: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
           <Link to={/product/}>
-            <h3 style={{ fontSize: '1.05rem', fontWeight: '700', color: '#3b2314', lineHeight: '1.8', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '1.08rem', fontWeight: '800', color: '#3b2314', lineHeight: '1.8', textAlign: 'center', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
               {product.name}
             </h3>
           </Link>
-          <p style={{ color: '#3b2314', fontWeight: '800', fontSize: '1.15rem', textAlign: 'center' }}>{product.price} ج.م</p>
+          <p style={{ color: '#d4af37', fontWeight: '800', fontSize: '1.2rem', textAlign: 'center' }}>{product.price} ج.م</p>
         </div>
 
         <button
@@ -48,24 +49,23 @@ export default function ProductCard({ product }) {
           style={{
             marginTop: 'auto',
             width: '100%',
-            padding: '12px',
+            padding: '13px',
             backgroundColor: product.inStock ? '#3b2314' : '#999',
             color: '#ffffff',
             fontWeight: '700',
-            fontSize: '0.95rem',
+            fontSize: '0.96rem',
             transition: 'all 0.3s ease-in-out',
-            fontFamily: 'Cairo, Tajawal, sans-serif'
+            fontFamily: 'Cairo, Tajawal, sans-serif',
+            borderRadius: '4px'
           }}
           onMouseEnter={(e) => {
             if (product.inStock) {
               e.currentTarget.style.backgroundColor = '#d4af37'
-              e.currentTarget.style.color = '#ffffff'
             }
           }}
           onMouseLeave={(e) => {
             if (product.inStock) {
               e.currentTarget.style.backgroundColor = '#3b2314'
-              e.currentTarget.style.color = '#ffffff'
             }
           }}
         >

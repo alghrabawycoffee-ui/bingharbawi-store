@@ -13,10 +13,11 @@ export default function Header() {
     <>
       <header style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #f0f0f0', position: 'sticky', top: 0, zIndex: 100 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', gap: '12px', maxWidth: '1200px', margin: '0 auto' }}>
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '1.3rem', fontWeight: '800', color: '#1A1A1A' }}>بن الغرباوي</span>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '1.4rem' }}>☕</span>
+            <span style={{ fontSize: '1.25rem', fontWeight: '900', color: '#1A1A1A' }}>بن الغرباوي</span>
           </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <button style={{ color: '#1A1A1A' }}>
               <FiSearch size={22} />
             </button>

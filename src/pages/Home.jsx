@@ -15,40 +15,38 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
       <Header />
-      <div style={{ backgroundColor: '#f9f9f9', padding: '30px 14px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '800', color: '#1A1A1A' }}>أجود أنواع البن العربي</h1>
-          <p style={{ color: '#4f4f4f', fontSize: '1rem' }}>تحميص طازج • جودة عالية • توصيل سريع</p>
+      <div style={{ background: 'linear-gradient(135deg, #1A1A1A 0%, #2d1810 100%)', padding: '40px 14px', color: '#FFFFFF' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3rem)', fontWeight: '900' }}>أجود أنواع البن العربي</h1>
+          <p style={{ opacity: 0.9, fontSize: '1rem' }}>تحميص طازج يومياً • جودة مضمونة</p>
         </div>
       </div>
-      <div style={{ padding: '16px 14px 0', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ padding: '18px 14px 0', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ position: 'relative' }}>
-          <FiSearch size={18} style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#6b6b6b' }} />
+          <FiSearch size={18} style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#6b6b6b' }} />
           <input
             type="text"
             placeholder="ابحث عن منتج..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{ width: '100%', padding: '11px 42px 11px 14px', borderRadius: '8px', border: '1px solid #e5e5e5', backgroundColor: '#FFFFFF', fontSize: '0.93rem' }}
+            style={{ width: '100%', padding: '12px 46px 12px 16px', borderRadius: '12px', border: '1px solid #e5e5e5', backgroundColor: '#FFFFFF', fontSize: '0.94rem' }}
           />
         </div>
       </div>
-      <div style={{ padding: '24px 14px 50px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: '800' }}>منتجاتنا</h2>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '12px' }}>
+      <div style={{ padding: '26px 14px 60px', maxWidth: '1200px', margin: '0 auto' }}>
+        <h2 style={{ fontSize: '1.15rem', fontWeight: '800', marginBottom: '16px' }}>جميع المنتجات</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: '14px' }}>
           {filtered.map((product) => (
-            <Link to={/product/} key={product.id} style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', overflow: 'hidden', border: '1px solid #f0f0f0', position: 'relative', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ width: '100%', height: '140px', overflow: 'hidden', backgroundColor: '#f9f9f9' }}>
+            <Link to={/product/} key={product.id} style={{ backgroundColor: '#FFFFFF', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 10px rgba(0,0,0,0.04)', border: '1px solid #f0f0f0', position: 'relative', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ width: '100%', height: '150px', overflow: 'hidden', backgroundColor: '#f9f9f9' }}>
                 <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <div style={{ padding: '10px 12px 16px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <h3 style={{ fontSize: '0.88rem', fontWeight: '700', color: '#1A1A1A', lineHeight: '1.7', minHeight: '42px', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{product.name}</h3>
-                <span style={{ fontWeight: '800' }}>{product.price} ر.س</span>
+              <div style={{ padding: '12px 14px 18px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <h3 style={{ fontSize: '0.9rem', fontWeight: '700', color: '#1A1A1A', lineHeight: '1.7', minHeight: '44px', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{product.name}</h3>
+                <span style={{ fontWeight: '800', color: '#1A1A1A', fontSize: '1rem' }}>{product.price} ر.س</span>
               </div>
-              <button onClick={(e) => { e.preventDefault(); addToCart(product); }} disabled={!product.inStock} style={{ position: 'absolute', bottom: '10px', left: '10px', width: '30px', height: '30px', borderRadius: '6px', backgroundColor: product.inStock ? '#1A1A1A' : '#d1d5db', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <FiPlus size={16} />
+              <button onClick={(e) => { e.preventDefault(); addToCart(product); }} disabled={!product.inStock} style={{ position: 'absolute', bottom: '12px', left: '12px', width: '32px', height: '32px', borderRadius: '50%', backgroundColor: product.inStock ? '#1A1A1A' : '#d1d5db', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <FiPlus size={18} />
               </button>
             </Link>
           ))}

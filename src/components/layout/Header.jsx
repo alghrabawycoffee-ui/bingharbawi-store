@@ -69,7 +69,7 @@ export default function Header() {
             <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '26px', height: '26px', borderRadius: '50%', backgroundColor: '#d4af37', color: '#1a100a', fontSize: '0.85rem', fontWeight: '700', padding: '0 6px' }}>{count}</span>
           </Link>
           {user ? (
-            <button onClick={logout} style={{ padding: '8px 22px', borderRadius: '4px', border: '1.5px solid #d4af37', color: '#d4af37', fontWeight: '700', fontSize: '0.92rem', fontFamily: 'Cairo, Tajawal, sans-serif', cursor: 'pointer' }}>تسجيل الخروج</button>
+            <button onClick={logout} style={{ padding: '8px 22px', borderRadius: '4px', border: '1.5px solid #d4af37', color: '#d4af37', fontWeight: '700', fontSize: '0.92rem', fontFamily: 'Cairo, Tajawal, sans-serif', cursor: 'pointer', background: 'none' }}>تسجيل الخروج</button>
           ) : (
             <Link to="/login" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 24px', borderRadius: '4px', backgroundColor: 'transparent', color: '#d4af37', fontWeight: '700', fontSize: '0.92rem', border: '1.5px solid #d4af37', fontFamily: 'Cairo, Tajawal, sans-serif' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -90,7 +90,7 @@ export default function Header() {
             <Link onClick={() => setMenuOpen(false)} to="/about" style={{ color: '#ffffff', fontWeight: '600', fontFamily: 'Cairo, Tajawal, sans-serif' }}>من نحن</Link>
             <Link onClick={() => setMenuOpen(false)} to="/cart" style={{ color: '#ffffff', fontWeight: '600', fontFamily: 'Cairo, Tajawal, sans-serif' }}>السلة ({count})</Link>
             {user ? (
-              <button onClick={() => { logout(); setMenuOpen(false) }} style={{ color: '#d4af37', fontWeight: '700', textAlign: 'right', background: 'none', border: 'none', cursor: 'pointer' }}>تسجيل الخروج</button>
+              <button onClick={() => { logout(); setMenuOpen(false) }} style={{ color: '#d4af37', fontWeight: '700', textAlign: 'right', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Cairo, Tajawal, sans-serif' }}>تسجيل الخروج</button>
             ) : (
               <Link onClick={() => setMenuOpen(false)} to="/login" style={{ color: '#d4af37', fontWeight: '700' }}>حسابي</Link>
             )}

@@ -50,6 +50,11 @@ img {
   display: block;
 }
 
+@keyframes slideInDrawer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -127,6 +132,11 @@ img {
   color: var(--text-secondary);
   font-size: 1.1rem;
   margin-bottom: 50px;
+}
+
+@media (max-width: 968px) {
+  .products-layout { grid-template-columns: 1fr !important; }
+  .filters-sidebar { position: static !important; }
 }
 
 @media (max-width: 768px) {

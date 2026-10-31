@@ -9,7 +9,7 @@ export default function CartDrawer({ isOpen, onClose }) {
   return (
     <>
       <div onClick={onClose} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000 }} />
-      <div style={{ position: 'fixed', top: 0, left: 0, height: '100vh', width: '100%', maxWidth: '420px', backgroundColor: 'var(--white)', zIndex: 1001, display: 'flex', flexDirection: 'column', boxShadow: 'var(--shadow-lg)', animation: 'slideIn 0.3s ease' }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, height: '100vh', width: '100%', maxWidth: '420px', backgroundColor: 'var(--white)', zIndex: 1001, display: 'flex', flexDirection: 'column', boxShadow: 'var(--shadow-lg)', animation: 'slideInDrawer 0.3s ease' }}>
         <div style={{ padding: '24px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <h2 style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--primary)' }}>سلة التسوق ({cart.length})</h2>
           <button onClick={onClose} style={{ background: 'none', border: 'none', fontSize: '1.8rem', cursor: 'pointer' }}>×</button>
@@ -56,13 +56,6 @@ export default function CartDrawer({ isOpen, onClose }) {
           </div>
         )}
       </div>
-
-      <style>{
-        @keyframes slideIn {
-          from { transform: translateX(-100%); }
-          to { transform: translateX(0); }
-        }
-      }</style>
     </>
   )
 }

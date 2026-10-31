@@ -5,4 +5,11 @@ body {
   color: #2b1d12;
   -webkit-tap-highlight-color: transparent;
 }
-a { color: #8b5a2b; text-decoration: none; }
+a { 
+  color: #8b5a2b; 
+  text-decoration: none; 
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.8;
+}

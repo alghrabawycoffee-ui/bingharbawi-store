@@ -1,55 +1,46 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useProducts } from '../context/ProductContext'
 import { useCart } from '../context/CartContext'
-import { FiSearch, FiShoppingCart, FiPlus } from 'react-icons/fi'
+import Header from '../components/layout/Header'
+import ProductCard from '../components/product/ProductCard'
 import CartDrawer from '../components/cart/CartDrawer'
+import { FiSearch } from 'react-icons/fi'
 
 export default function Index() {
   const { products } = useProducts()
-  const { addToCart, count } = useCart()
+  const { count } = useCart()
   const [search, setSearch] = useState('')
-  const [open, setOpen] = useState(false)
+  const [openCart, setOpenCart] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
 
-  const list = products.filter(p => p.name.includes(search))
+  const list = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()))
 
   return (
-    <div style={{ background: '#fff', minHeight: '100vh' }}>
-      <header style={{ position: 'sticky', top: 0, background: '#fff', borderBottom: '1px solid #f2f2f2', zIndex: 10 }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '1.8rem' }}>☕</span>
-            <span style={{ fontWeight: 900, fontSize: '1.25rem' }}>بن الغرباوي</span>
+    <div style={{ background: '#fff', minHeight: '100vh', direction: 'rtl' }}>
+      <Header onMenu={() => {}} onSearch={() => setShowSearch(!showSearch)} onCart={() => setOpenCart(true)} />
+      
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px' }}>
+        {showSearch && (
+          <div style={{ position: 'relative', marginBottom: '20px', animation: 'fadeIn 0.2s ease-in' }}>
+            <FiSearch size={18} style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#9b9b9b' }} />
+            <input
+              autoFocus
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="ابحث عن منتج..."
+              style={{ width: '100%', padding: '13px 48px 13px 16px', border: '1px solid #e8e8e8', borderRadius: '14px', background: '#fff', fontSize: '0.95rem', fontFamily: 'Cairo, sans-serif', outline: 'none', boxSizing: 'border-box' }}
+            />
           </div>
-          <button onClick={() => setOpen(true)} style={{ position: 'relative' }}>
-            <FiShoppingCart size={24} />
-            {count > 0 && <span style={{ position: 'absolute', top: -6, right: -8, background: '#000', color: '#fff', borderRadius: '50%', width: 18, height: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11 }}>{count}</span>}
-          </button>
-        </div>
-      </header>
-
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '14px' }}>
-        <div style={{ position: 'relative', marginBottom: 16 }}>
-          <FiSearch size={18} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: '#999' }} />
-          <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="ابحث عن منتج" style={{ width: '100%', padding: '11px 42px 11px 14px', border: '1px solid #eee', borderRadius: 10, background: '#fafafa' }} />
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
+        )}
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
           {list.map(p => (
-            <div key={p.id} style={{ border: '1px solid #f3f3f3', borderRadius: 12, overflow: 'hidden', position: 'relative' }}>
-              <Link to={/product/}>
-                <img src={p.image} alt={p.name} style={{ width: '100%', height: 150, objectFit: 'cover' }} />
-              </Link>
-              <div style={{ padding: '10px 12px 16px' }}>
-                <Link to={/product/}><div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.7, height: 48, overflow: 'hidden' }}>{p.name}</div></Link>
-                <div style={{ fontWeight: 900, marginTop: 6 }}>{p.price} ر.س</div>
-              </div>
-              <button onClick={() => addToCart(p)} style={{ position: 'absolute', bottom: 10, left: 10, width: 32, height: 32, borderRadius: 8, background: '#000', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiPlus size={16} /></button>
-            </div>
+            <ProductCard key={p.id} product={p} />
           ))}
         </div>
-      </div>
-      <CartDrawer open={open} onClose={() => setOpen(false)} />
+      </main>
+      
+      <CartDrawer open={openCart} onClose={() => setOpenCart(false)} />
     </div>
   )
 }
